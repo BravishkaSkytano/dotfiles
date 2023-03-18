@@ -3,4 +3,10 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
+  f_vimrc:
+    src: vimrc
+    dst: ~/.vimrc
 profiles:
+  penguin:
+    dotfiles:
+    - f_vimrc
