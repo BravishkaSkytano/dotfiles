@@ -1,3 +1,13 @@
+" Use zo to open the fold under the cursor.
+" Use zc to close the fold under the cursor.
+" Use zR to open all folds.
+" Use zM to close all folds.
+" Type :help folding for more information.
+" You're welcome ;)
+
+
+" GENERAL ---------------------------------------------------------------- {{{
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -78,12 +88,8 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Remove mode display
 set noshowmode
 
-" Use zo to open the fold under the cursor.
-" Use zc to close the fold under the cursor.
-" Use zR to open all folds.
-" Use zM to close all folds.
-" Type :help folding for more information.
-" You're welcome ;)
+" }}}
+
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
@@ -92,7 +98,9 @@ call plug#begin('~/.vim/plugged')
     " Writing
     Plug 'dense-analysis/ale'
     Plug 'mattn/emmet-vim'
-
+    Plug 'tpope/vim-surround'
+    Plug 'vimwiki/vimwiki'
+    
     " Tools
     Plug 'preservim/nerdtree'
     " Configure fxf when you have time
@@ -107,6 +115,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'sainnhe/everforest'
 
 call plug#end()
+
+let g:vimwiki_list = [{ 'path': '~/Documents/VimWiki' }]
 
 " }}}
 
@@ -194,13 +204,18 @@ if version >= 703
     set undoreload=10000
 endif
 
+" VimWiki
+command! Diary VimwikiDiaryIndex
+augroup vimwikigroup
+    autocmd!
+    " automatically update links on read diary
+    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
+augroup end
+
 " }}}
 
 
 " STATUS LINE ------------------------------------------------------------ {{{
-
-" Clear status line when vimrc is reloaded.
-set statusline=
 
 " Show the status on the second to last line.
 set laststatus=2
