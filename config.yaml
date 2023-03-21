@@ -6,7 +6,11 @@ dotfiles:
   f_vimrc:
     src: vimrc
     dst: ~/.vimrc
+  f_bash_aliases:
+    src: bash_aliases
+    dst: ~/.bash_aliases
 profiles:
   penguin:
     dotfiles:
     - f_vimrc
+    - f_bash_aliases
