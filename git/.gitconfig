@@ -1,0 +1,7 @@
+[user]
+	name = Bravishka Skytano
+	email = yolson@liberty.edu
+[core]
+	editor = vim
+[credential]
+	helper = cache --timeout 27000
