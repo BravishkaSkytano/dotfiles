@@ -6,7 +6,8 @@
 sudo apt update; sudo apt upgrade
 
 # Install essentials
-sudo apt install vim git stow
+sudo apt install vim git stow python3 python-pip3
+pip3 install proselint
 
 # Clone git repositories
 cd ~
