@@ -311,8 +311,28 @@ let NERDTreeShowHidden=1
 let g:limelight_default_coefficient = 0.7
 let g:limelight_paragraph_span = 0
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set wrap
+  set linebreak
+  Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  set showmode
+  set showcmd
+  set scrolloff=10
+  set nowrap
+  set nolinebreak
+  Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
