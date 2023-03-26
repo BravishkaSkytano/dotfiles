@@ -93,13 +93,16 @@ set noshowmode
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
     " Statusbar
     Plug 'itchyny/lightline.vim'
-    Plug 'ojroques/vim-scrollstatus'
-
-    Plug 'ryanoasis/vim-devicons'
 
     " Files
     Plug 'preservim/nerdtree'
@@ -118,20 +121,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'maximbaz/lightline-ale'
 
     " Writing
-    Plug 'sheerun/vim-polyglot'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
     Plug 'vimwiki/vimwiki'
-    Plug 'kana/vim-textobj-user', {'for': ['markdown', 'text', 'wiki']}
-    Plug 'preservim/vim-textobj-quote', {'for': ['markdown', 'text', 'wiki']}
+    Plug 'kana/vim-textobj-user', {'for': ['markdown', 'text']}
+    Plug 'preservim/vim-textobj-quote', {'for': ['markdown', 'text']}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
     " Colorschemes
     Plug 'sainnhe/everforest'
 
 call plug#end()
-
-let g:vimwiki_list = [{ 'path': '~/Documents/VimWiki' }]
 
 " }}}
 
@@ -225,16 +225,20 @@ if version >= 703
     set undoreload=10000
 endif
 
-" Install Vim-Plug automatically if needed
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 " VimWiki
-command! WBlog VimwikiAll2HTML
-autocmd FileType vimwiki autocmd BufWritePost <buffer> Vimwiki2HTML
+let g:vimwiki_list = [{
+  \ 'auto_export': 1,
+  \ 'automatic_nested_syntaxes':1,
+  \ 'path_html': '$HOME/Documents/vimwiki/_site',
+  \ 'path': '$HOME/Documents/vimwiki/content',
+  \ 'template_path': '$HOME/Documents/vimwiki/templates/',
+  \ 'syntax': 'markdown',
+  \ 'ext':'.md',
+  \ 'template_default':'markdown',
+  \ 'custom_wiki2html': '$HOME/.dotfiles/wiki2html.sh',
+  \ 'template_ext':'.html'
+\}]
+
 command! Diary VimwikiDiaryIndex
 augroup vimwikigroup
     autocmd!
@@ -242,6 +246,7 @@ augroup vimwikigroup
     autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
 augroup end
 
+" Wordcount"
 function! WordCount()
     let currentmode = mode()
     if !exists("g:lastmode_wc")
@@ -383,7 +388,6 @@ let g:lightline = {
     \    'wordcount': 'WordCount',
     \    'gitbranch': 'FugitiveHead',
     \    'readonly': 'LightlineReadonly',
-    \    'percent' : 'ScrollStatus',
     \ },
     \ 'component_expand': {
     \   'linter_checking': 'lightline#ale#checking',
@@ -405,14 +409,6 @@ let g:lightline = {
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '', 'right': '' }
     \ }
-
-" Add devicon to lightline
-function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-function! MyFileformat()
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
 
 " Lightline ale
 let g:lightline#ale#indicator_checking = "\uf110 "
