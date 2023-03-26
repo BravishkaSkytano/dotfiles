@@ -227,24 +227,13 @@ endif
 
 " VimWiki
 let g:vimwiki_list = [{
-  \ 'auto_export': 1,
-  \ 'automatic_nested_syntaxes':1,
-  \ 'path_html': '$HOME/Documents/vimwiki/_site',
   \ 'path': '$HOME/Documents/vimwiki/content',
-  \ 'template_path': '$HOME/Documents/vimwiki/templates/',
   \ 'syntax': 'markdown',
   \ 'ext':'.md',
-  \ 'template_default':'markdown',
-  \ 'custom_wiki2html': '$HOME/.dotfiles/wiki2html.sh',
-  \ 'template_ext':'.html'
+  \ 'auto_diary_index': 1
 \}]
 
 command! Diary VimwikiDiaryIndex
-augroup vimwikigroup
-    autocmd!
-    " automatically update links on read diary
-    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
-augroup end
 
 " Wordcount"
 function! WordCount()
@@ -290,7 +279,6 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ale_linters = {
             \   'markdown': ['proselint', 'languagetool'],
             \   'text': ['proselint', 'languagetool'],
-            \   'wiki': ['proselint', 'languagetool'],
 	        \   'python': ['pyls', 'autoimport', 'flake8', 'yapf'],
             \   }
 let g:ale_fixers = {
@@ -303,13 +291,7 @@ let g:ale_lint_on_save = 1
 
 " NERDTree
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
-
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:NERDTreeHighlightCursorline = 0
-
 let NERDTreeShowHidden=1
 
 " Limelight + Goyo
