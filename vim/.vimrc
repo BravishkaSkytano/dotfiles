@@ -213,7 +213,7 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" If the current file type is HTML, set indentation to 2 spaces.
+" Set indentation based on filetype.
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype css setlocal tabstop=2 shiftwidth=2 expandtab
 
