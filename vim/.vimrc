@@ -123,7 +123,6 @@ call plug#begin('~/.vim/plugged')
     " Writing
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
-    Plug 'vimwiki/vimwiki'
     Plug 'kana/vim-textobj-user', {'for': ['markdown', 'text']}
     Plug 'preservim/vim-textobj-quote', {'for': ['markdown', 'text']}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -224,16 +223,6 @@ if version >= 703
     set undofile
     set undoreload=10000
 endif
-
-" VimWiki
-let g:vimwiki_list = [{
-  \ 'path': '$HOME/Documents/vimwiki/content',
-  \ 'syntax': 'markdown',
-  \ 'ext':'.md',
-  \ 'auto_diary_index': 1
-\}]
-
-command! Diary VimwikiDiaryIndex
 
 " Wordcount"
 function! WordCount()
