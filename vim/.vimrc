@@ -288,23 +288,40 @@ let g:limelight_default_coefficient = 0.7
 let g:limelight_paragraph_span = 0
 
 function! s:goyo_enter()
-  set noshowmode
+  if has('gui_running')
+    set fullscreen
+    set linespace=7
+  endif
+  set showmode
   set noshowcmd
   set scrolloff=999
   set wrap
   set linebreak
   Limelight
-  " ...
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
 endfunction
 
 function! s:goyo_leave()
-  set showmode
+  if has('gui_running')
+    set nofullscreen
+    set linespace=0
+  endif
+  set noshowmode
   set showcmd
   set scrolloff=10
   set nowrap
   set nolinebreak
   Limelight!
-  " ...
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
