@@ -1,3 +1,9 @@
+# Bash prompt
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+PS1="\[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+
 # Stow
 function run_stow() {
     echo "Running stow..."
@@ -53,7 +59,7 @@ alias nov='cal -m 11'
 alias dec='cal -m 12'
 
 # Notes
-function create-file() {
+function create_file() {
     read -p "Enter filename: " filename
     read -p "Create $dir$filename? (y/n/c):- " choice
     case $choice in
@@ -64,9 +70,9 @@ function create-file() {
     esac
 }
 
-function new-note() {
+function new_note() {
     shopt -s globstar
-    
+
     path=~/notes
     error=">>> Invalid Selection"
 
@@ -78,5 +84,5 @@ function new-note() {
     done
 
     cd ..
-    create-file
+    create_file
 }
