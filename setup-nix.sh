@@ -18,28 +18,46 @@ echo "You can also just run 'nix-channel --update'"
 # install packages
 echo "Installing Nix packages..."
 
-nix-env -iA \
-	nixpkgs.git \
-	nixpkgs.stow \
-	nixpkgs.bat \
-	nixpkgs.fzf
-
-read -p "Do you want to install LibreOffice? Yes(y) / No (n):- " choice
+read -p "Install Git? Yes(y) / No (n):- " choice
 case $choice in
-	[yY]* ) nix-env -iA nixos.bat ;;
-	[nN]* ) echo "Skipping.." ;;
+	[yY]* ) nix-env -iA nixpkgs.git ;;
+	[nN]* ) break ;;
 esac
 
-read -p "Do you want to install Go? Yes(y) / No (n):- " choice
+read -p "Install Neofetch Yes(y) / No (n):- " choice
 case $choice in
-	[yY]* ) nix-env -iA nixos.go ;;
-	[nN]* ) echo "Skipping..." ;;
+    [yY]* ) nix-env -iA nixpkgs.neofetch ;;
+    [nN]* ) break ;;
 esac
 
-read -p "Do you want to install Hugo? Yes(y) / No(n):- " choice
+read -p "Install Stow? Yes(y) / No (n):- " choice
 case $choice in
-	[yY]* ) nix-env -iA nixos.hugo ;;
-	[nN]* ) echo "Skipping..." ;;
+    [yY]* ) nix-env -iA nixpkgs.stow ;;
+    [nN]* ) break ;;
+esac
+
+read -p "Install bat? Yes(y) / No (n):- " choice
+case $choice in
+    [yY]* ) nix-env -iA nixpkgs.bat ;;
+    [nN]* ) break ;;
+esac
+
+read -p "Install fzf Yes(y) / No (n):- " choice
+case $choice in
+    [yY]* ) nix-env -iA nixpkgs.fzf ;;
+    [nN]* ) break ;;
+esac
+
+read -p "Install Go? Yes(y) / No (n):- " choice
+case $choice in
+	[yY]* ) nix-env -iA nixpkgs.go ;;
+	[nN]* ) break ;;
+esac
+
+read -p "Install Hugo? Yes(y) / No(n):- " choice
+case $choice in
+	[yY]* ) nix-env -iA nixpkgs.hugo ;;
+	[nN]* ) break ;;
 esac
 
 echo "Done installing packages."

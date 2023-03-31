@@ -7,3 +7,5 @@
 	helper = cache --timeout 27000
 [submodule]
 	recurse = true
+[pull]
+	rebase = false
