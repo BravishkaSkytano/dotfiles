@@ -14,8 +14,8 @@ alias ..='cd ..;pwd'
 alias ...='cd ../..;pwd'
 alias ....='cd ../../..;pwd'
 alias tree='tree --dirsfirst -C'
+alias tree-a="tree -a --dirsfirst -C -I '.git|node_modules'"
 alias ls='ls --color'
-
 
 # Calendar
 alias jan='cal -m jan'
