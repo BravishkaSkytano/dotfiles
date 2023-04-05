@@ -28,15 +28,15 @@ run_stow() {
     echo "Done."
 }
 
-# Hugo + my notes
+# Hugo
 create_file() {
-    read -p "Enter filename: " filename
-    read -p "Create $dir$filename? Yes(y) / No(n) / Go back(b) / Exit(e):- " choice
+    read -rp "Enter filename: " filename
+    read -rp "Create '$dir$filename?' Yes(y) / No(n) / Go back(b) / Exit(e):- " choice
     case $choice in
-        [yY]* ) hugo new $dir$filename && vim content/$dir$filename ;;
+        [yY]* ) hugo new "$dir$filename" && vim "content/$dir$filename" && cd "$path" && break ;;
         [nN]* ) create_file ;;
         [bB]* ) new_note ;;
-        [eE]* ) break ;;
+        [eE]* ) return ;;
         * ) echo "$error" ;;
     esac
 }
@@ -45,7 +45,7 @@ new_note() {
     path=~/notes
     error=">>> Invalid Selection"
 
-    cd $path/content
+    cd "$path/content" || return
     printf "Select folder:\n"
     select dir in ./**/; do
         echo "You selected '$dir'" && break ;
@@ -60,10 +60,16 @@ open_note() {
     path=~/notes
     error=">>> Invalid Selection"
 
-    cd $path/content
+    cd $path/content || return
+    printf "Select folder:\n"
+    select dir in ./**/; do
+        echo "You selected '$dir'" && break ;
+        echo "$error" ;
+    done
+    cd "$dir" || return
     printf "Select note:\n"
-    select f in ./**/*.md; do
-        vim $f && break ;
+    select f in ./*.md; do
+        vim "$f" && cd "$path" && break ;
         echo "$error" ;
     done
 }
