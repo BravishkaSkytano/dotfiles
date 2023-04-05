@@ -29,11 +29,25 @@ run_stow() {
 }
 
 # Hugo
+selector() {
+    select name in "./" *; do
+        if [ "$name" = "./" ]; then
+            break
+        elif [ -d "$name" ]; then
+            cd "$name" || return
+            selector
+        elif [ -f "$name" ]; then
+            export name="$name" && break
+        fi
+        break
+    done
+}
+
 create_file() {
     read -rp "Enter filename: " filename
-    read -rp "Create '$dir$filename?' Yes(y) / No(n) / Go back(b) / Exit(e):- " choice
+    read -rp "Create '$dir/$filename?' Yes(y) / No(n) / Go back(b) / Exit(e):- " choice
     case $choice in
-        [yY]* ) hugo new "$dir$filename" && vim "content/$dir$filename" && cd "$path" && break ;;
+        [yY]* ) hugo new "$dir/$filename" && vim "$dir/$filename" && cd "$path" ;;
         [nN]* ) create_file ;;
         [bB]* ) new_note ;;
         [eE]* ) return ;;
@@ -43,33 +57,20 @@ create_file() {
 
 new_note() {
     path=~/notes
-    error=">>> Invalid Selection"
 
     cd "$path/content" || return
-    printf "Select folder:\n"
-    select dir in ./**/; do
-        echo "You selected '$dir'" && break ;
-        echo "$error" ;
-    done
-
-    cd ..
+    selector
+    dir=$(pwd | cut -d/ -f 5-)
+    echo "$dir"
+    cd "$path" || return
     create_file
 }
 
 open_note() {
     path=~/notes
-    error=">>> Invalid Selection"
 
     cd $path/content || return
-    printf "Select folder:\n"
-    select dir in ./**/; do
-        echo "You selected '$dir'" && break ;
-        echo "$error" ;
-    done
-    cd "$dir" || return
-    printf "Select note:\n"
-    select f in ./*.md; do
-        vim "$f" && cd "$path" && break ;
-        echo "$error" ;
-    done
+    selector
+    vim "$name"
+    cd "$path" || return
 }
