@@ -1,8 +1,12 @@
-" Use zo to open the fold under the cursor.
-" Use zc to close the fold under the cursor.
-" Use zR to open all folds.
-" Use zM to close all folds.
-" Type :help folding for more information.
+" zr reduces fold level throughout buffer
+" zR opens all folds
+" zm increases fold level throughout buffer
+" zM folds everything all the way
+" za open a fold your cursor is on
+" zA open a fold your cursor is on recursively
+" zc close a fold your cursor is on
+" zC close a fold your cursor is on recursively
+" Type :help fold-expr and :help fold-commands for more information.
 " You're welcome ;)
 
 
@@ -63,9 +67,6 @@ set smartcase
 " Show partial command you type in the last line of the screen.
 set showcmd
 
-" Show the mode you are on the last line.
-set showmode
-
 " Show matching words during a search.
 set showmatch
 
@@ -86,7 +87,12 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " Remove mode display
-set noshowmode
+set noshowmode " remove mode display"
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
 
 " }}}
 
@@ -123,12 +129,11 @@ call plug#begin('~/.vim/plugged')
     " Writing
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
-    Plug 'kana/vim-textobj-user', {'for': ['markdown', 'text']}
-    Plug 'preservim/vim-textobj-quote', {'for': ['markdown', 'text']}
-    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'godlygeek/tabular'
+    Plug 'preservim/vim-markdown'
 
     " Colorschemes
-    Plug 'sainnhe/everforest'
+    Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
@@ -143,18 +148,7 @@ if has('termguicolors')
 endif
 
 set background=dark
-
-" Set contrast
-" Available values: 'hard', 'medium' (default), 'soft'.
-let g:everforest_background = 'soft'
-
-" For better performance
-let g:everforest_better_performance = 1
-
-" Enable italics
-let g:everforest_enable_italic = 1
-
-colorscheme everforest
+colorscheme PaperColor
 
 " }}}
 
@@ -205,12 +199,6 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
-
-" Enable the marker method of folding.
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
 
 " Set indentation based on filetype.
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
@@ -328,20 +316,17 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " vim-markdown
-let g:vim_markdown_folding_disabled = 1
 "quote stuff (curly instead of normal "", qc to autocorrect)
 nnoremap <silent> qr <Plug>ReplaceWithCurly
 "spell check for only markdown
 autocmd FileType markdown setlocal spell
 "set to conceal formatting by default to not clutter
 set conceallevel=2
-
-augroup textobj_quote
-  autocmd!
-  autocmd FileType markdown call textobj#quote#init()
-  autocmd FileType textile call textobj#quote#init()
-  autocmd FileType text call textobj#quote#init({'educate': 0})
-augroup END
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_autowrite = 1
 
 "lazy load vim-fuigitive
 command! Gstatus call LazyLoadFugitive('Gstatus')
@@ -363,7 +348,7 @@ endfunction
 set laststatus=2
 
 let g:lightline = {
-    \ 'colorscheme': 'everforest',
+    \ 'colorscheme': 'PaperColor',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             ['gitbranch',  'filetype', 'filename', 'wordcount', 'modified', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ] ],
@@ -404,20 +389,5 @@ let g:lightline#ale#indicator_infos = "\uf129 "
 let g:lightline#ale#indicator_warnings = "\uf071 "
 let g:lightline#ale#indicator_errors = "\uf05e "
 let g:lightline#ale#indicator_ok = "\uf00c "
-
-" Transparency
-autocmd VimEnter * call SetupLightlineColors()
-function SetupLightlineColors() abort
-
-" transparent background in statusbar
-let l:palette = lightline#palette()
-let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
-let l:palette.insert.middle = l:palette.normal.middle
-let l:palette.visual.middle = l:palette.normal.middle
-let l:palette.inactive.middle = l:palette.normal.middle
-let l:palette.inactive.middle = l:palette.normal.middle
-let l:palette.tabline.middle = l:palette.normal.middle
-call lightline#colorscheme()
-endfunction
 
 " }}}
