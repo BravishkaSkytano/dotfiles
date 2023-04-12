@@ -1,5 +1,5 @@
 dotfiles() {
-    cd ~/.dotfiles
+    cd ~/.dotfiles || return
     tree-a
     gf
     gs
@@ -9,25 +9,25 @@ dotfiles() {
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-PS1="\[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+PS1="\[\033[01;32m\]\w \[\033[01;34m\]\$(parse_git_branch)\[\033[00m\]\$ "
 
 git_init() {
     if [ -z "$1" ]; then
         printf "%s\n" "Please provide a directory name.";
     else
         mkdir "$1";
-        builtin cd "$1";
+        builtin cd "$1" || return
         pwd;
         git init;
         touch readme.md .gitignore LICENSE;
-        echo "# $(basename $PWD)" >> readme.md
+        echo "# $(basename "$PWD")" >> readme.md
     fi
 }
 
 # Stow
 run_stow() {
     echo "Running stow..."
-    cd ~/.dotfiles
+    cd ~/.dotfiles || return
     for d in $(ls -d */ | cut -f1 -d '/');
     do
         ( stow "$d" )
@@ -54,11 +54,11 @@ create_file() {
     read -rp "Enter filename: " filename
     read -rp "Create '$dir/$filename?' Yes(y) / No(n) / Go back(b) / Exit(e):- " choice
     case $choice in
-        [yY]* ) hugo new "$dir/$filename" && vim "$dir/$filename" && cd "$path" ;;
+        [yY]* ) hugo new "$dir/$filename" && vim "$dir/$filename" && cd "$path" || return ;;
         [nN]* ) create_file ;;
         [bB]* ) new_note ;;
         [eE]* ) return ;;
-        * ) echo "$error" ;;
+        * ) echo "Error, not an option" ;;
     esac
 }
 
