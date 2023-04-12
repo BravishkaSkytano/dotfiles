@@ -67,7 +67,7 @@ echo "Moving on to dotfiles..."
 read -rp "Run stow? Yes(y) / No(n):- " choice
 if [ "$choice" = "y" ]; then
 	echo "Running stow..."
-	cd ~/.dotfiles || exit
+	cd ~/.dotfiles || return
 	for d in $(ls -d */ | cut -f1 -d '/');
 	do
 		( stow "$d" )
