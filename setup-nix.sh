@@ -61,21 +61,5 @@ case $choice in
 esac
 
 echo "Done installing packages."
-
-# Configuring dotfiles
-echo "Moving on to dotfiles..."
-read -rp "Run stow? Yes(y) / No(n):- " choice
-if [ "$choice" = "y" ]; then
-	echo "Running stow..."
-	cd ~/.dotfiles || return
-	for d in $(ls -d */ | cut -f1 -d '/');
-	do
-		( stow "$d" )
-	done
-	echo "Done."
-elif [ "$choice" = "n" ];then
-	echo "Skipping..."
-fi
-
 echo "Setup successful."
 echo "Have fun with your new system!"
