@@ -8,6 +8,7 @@ alias gl='git log --oneline'
 alias gb='git checkout -b'
 alias gd='git diff'
 alias gf='git fetch'
+alias gu='git fetch && git status'
 
 # Directories
 alias ..='cd ..;pwd'
@@ -16,6 +17,11 @@ alias ....='cd ../../..;pwd'
 alias tree='tree --dirsfirst -C'
 alias tree-a="tree -a --dirsfirst -C -I '.git|node_modules'"
 alias ls='ls --color'
+alias la='ls -A'
+alias l='ls -CF'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # Calendar
 alias jan='cal -m jan'
