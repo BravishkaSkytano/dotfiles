@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Install Nix package manager?. Yes(y) / No(n) / Cancel(c):- " choice
+read -rp "Install Nix package manager?. Yes(y) / No(n) / Cancel(c):- " choice
 if [ "$choice" = "y" ]; then
 	echo "Installing Nix..."
 	sh <(curl -L https://nixos.org/nix/install)
@@ -18,56 +18,56 @@ echo "You can also just run 'nix-channel --update'"
 # install packages
 echo "Installing Nix packages..."
 
-read -p "Install Git? Yes(y) / No (n):- " choice
+read -rp "Install Git? Yes(y) / No (n):- " choice
 case $choice in
 	[yY]* ) nix-env -iA nixpkgs.git ;;
-	[nN]* ) break ;;
+	[nN]* ) echo "Skipping..." ;;
 esac
 
-read -p "Install Neofetch Yes(y) / No (n):- " choice
+read -rp "Install Neofetch Yes(y) / No (n):- " choice
 case $choice in
     [yY]* ) nix-env -iA nixpkgs.neofetch ;;
-    [nN]* ) break ;;
+    [nN]* ) echo "Skipping..." ;;
 esac
 
-read -p "Install Stow? Yes(y) / No (n):- " choice
+read -rp "Install Stow? Yes(y) / No (n):- " choice
 case $choice in
     [yY]* ) nix-env -iA nixpkgs.stow ;;
-    [nN]* ) break ;;
+    [nN]* ) echo "Skipping..." ;;
 esac
 
-read -p "Install bat? Yes(y) / No (n):- " choice
+read -rp "Install bat? Yes(y) / No (n):- " choice
 case $choice in
     [yY]* ) nix-env -iA nixpkgs.bat ;;
-    [nN]* ) break ;;
+    [nN]* ) echo "Skipping..." ;;
 esac
 
-read -p "Install fzf Yes(y) / No (n):- " choice
+read -rp "Install fzf Yes(y) / No (n):- " choice
 case $choice in
     [yY]* ) nix-env -iA nixpkgs.fzf ;;
-    [nN]* ) break ;;
+    [nN]* ) echo "Skipping..." ;;
 esac
 
-read -p "Install Go? Yes(y) / No (n):- " choice
+read -rp "Install Go? Yes(y) / No (n):- " choice
 case $choice in
 	[yY]* ) nix-env -iA nixpkgs.go ;;
-	[nN]* ) break ;;
+	[nN]* ) echo "Skipping..." ;;
 esac
 
-read -p "Install Hugo? Yes(y) / No(n):- " choice
+read -rp "Install Hugo? Yes(y) / No(n):- " choice
 case $choice in
 	[yY]* ) nix-env -iA nixpkgs.hugo ;;
-	[nN]* ) break ;;
+	[nN]* ) echo "Skipping..." ;;
 esac
 
 echo "Done installing packages."
 
 # Configuring dotfiles
 echo "Moving on to dotfiles..."
-read -p "Run stow? Yes(y) / No(n):- " choice
+read -rp "Run stow? Yes(y) / No(n):- " choice
 if [ "$choice" = "y" ]; then
 	echo "Running stow..."
-	cd ~/.dotfiles
+	cd ~/.dotfiles || exit
 	for d in $(ls -d */ | cut -f1 -d '/');
 	do
 		( stow "$d" )
@@ -79,4 +79,3 @@ fi
 
 echo "Setup successful."
 echo "Have fun with your new system!"
-
