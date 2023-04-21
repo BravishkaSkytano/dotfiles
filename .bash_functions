@@ -1,5 +1,5 @@
 dotfiles() {
-    cd ~/.dotfiles || return
+    cd ~/dotfiles || return
     tree-a
     gf
     gs
@@ -27,7 +27,7 @@ git_init() {
 # Stow
 run_stow() {
     echo "Running stow..."
-    cd ~/.dotfiles || return
+    cd ~/dotfiles || return
     for d in $(ls -d */ | cut -f1 -d '/');
     do
         ( stow "$d" )
@@ -36,10 +36,16 @@ run_stow() {
 }
 
 # Hugo
+
+clone_notes_repo() {
+    read -p "Enter the URL to your notes repo: " notes_repo
+    git clone "$notes_repo" ~/notes
+}
+
 selector() {
     select name in "./" *; do
         if [ "$name" = "./" ]; then
-            break
+            continue
         elif [ -d "$name" ]; then
             cd "$name" || return
             selector
@@ -63,8 +69,13 @@ create_file() {
 }
 
 new_note() {
+    if [ -d ~/notes ]; then
+        continue
+    else
+        clone_notes_repo
+    fi
+    
     path=~/notes
-
     cd "$path/content" || return
     selector
     dir=$(pwd | cut -d/ -f 5-)
@@ -74,8 +85,13 @@ new_note() {
 }
 
 open_note() {
-    path=~/notes
+    if [ -d ~/notes ]; then
+        continue
+    else
+        clone_notes_repo
+    fi
 
+    path=~/notes
     cd $path/content || return
     selector
     vim "$name"
