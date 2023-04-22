@@ -8,7 +8,15 @@ alias gl='git log --oneline'
 alias gb='git checkout -b'
 alias gd='git diff'
 alias gf='git fetch'
-alias gu='git fetch && git status'
+alias gu='git fetch; git status'
+
+# yadm
+alias ys='yadm status'
+alias ya='yadm add'
+alias yc='yadm commit'
+alias yp='yadm push'
+alias yd='yadm diff'
+alias yup='yadm fetch; yadm status'
 
 # Directories
 alias ..='cd ..;pwd'

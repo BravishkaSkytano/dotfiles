@@ -1,10 +1,3 @@
-dotfiles() {
-    cd ~/dotfiles || return
-    tree-a
-    gf
-    gs
-}
-
 # Git
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -24,19 +17,7 @@ git_init() {
     fi
 }
 
-# Stow
-run_stow() {
-    echo "Running stow..."
-    cd ~/dotfiles || return
-    for d in $(ls -d */ | cut -f1 -d '/');
-    do
-        ( stow "$d" )
-    done
-    echo "Done."
-}
-
 # Hugo
-
 clone_notes_repo() {
     read -p "Enter the URL to your notes repo: " notes_repo
     git clone "$notes_repo" ~/notes
@@ -74,7 +55,7 @@ new_note() {
     else
         clone_notes_repo
     fi
-    
+
     path=~/notes
     cd "$path/content" || return
     selector
