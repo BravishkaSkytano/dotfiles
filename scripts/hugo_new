@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Simple bash file to help create new content per directory structure
+# As well as add and commit the new file to Git.
+#
+# Usage
+# ./new TYPE TITLE-with-dashes
+#
+# Customize according to your needs.
+
+EDITOR=vim # Set to your prefered editor
+
+if [[ -z "$1" ]]; then # if user didn't supply parameters
+    echo "You must supply parameters, e.g."
+    echo "  ./new post TITLE-with-dashes"
+    echo "  ./new SECTION SECTION-title page-title"
+fi
+
+if [[ $1 = "post" ]]; then
+    export TYPE="posts"
+    export TITLE="$2"
+fi
+
+if [[ -n $TYPE ]] && [[ -n $TITLE ]]; then # check if type and title have been set
+    hugo new $TYPE/$TITLE.md
+    # Open file
+    read -rp "Open? [y/n]: " reply
+    case $reply in
+        [yY]* ) $EDITOR "content/$TYPE/$TITLE.md" ;;
+        [nN]* ) echo "Skipping..." ;;
+    esac
+
+    # Add to git and commit
+    git add "content/$TYPE/$TITLE.md"
+    read -rp "Run git commit and git push? [y/n]: " reply
+    case $reply in
+        [yY]* ) git commit -m "Add $TITLE"; git push ;;
+        [nN]* ) echo "Aborting..." ;;
+    esac
+else
+    echo "Error setting TYPE and TITLE"
+    echo "Are the parameters you used included in the script?"
+fi
