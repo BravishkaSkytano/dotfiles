@@ -17,64 +17,46 @@ git_init() {
     fi
 }
 
-# Hugo
-clone_notes_repo() {
-    read -p "Enter the URL to your notes repo: " notes_repo
-    git clone "$notes_repo" ~/notes
+git_clone() {
+    read -rp "Username: " username
+    read -rp "Repo: " repo
+    git clone https://github.com/$username/$repo.git
 }
 
-selector() {
-    select name in "./" *; do
-        if [ "$name" = "./" ]; then
-            continue
-        elif [ -d "$name" ]; then
-            cd "$name" || return
-            selector
-        elif [ -f "$name" ]; then
-            export name="$name" && break
+# Managing files
+menu() {
+    EDITOR=vim
+    select OPT in "./" *; do
+        if [ "$OPT" = "./" ]; then
+            CURDIR=$(dirs +0)
+            read -rp "Enter filename: " FILENAME
+            read -rp "Create $CURDIR/$FILENAME? [y/n]: " choice
+            case $choice in
+                [yY]* ) $EDITOR "$FILENAME" ;;
+                [nN]* ) menu ;;
+            esac
+        elif [ -d "$OPT" ]; then
+            cd "$OPT" || return
+            menu
+        elif [ -f "$OPT" ]; then
+            $EDITOR "$OPT"
         fi
         break
     done
 }
 
-create_file() {
-    read -rp "Enter filename: " filename
-    read -rp "Create '$dir/$filename?' Yes(y) / No(n) / Go back(b) / Exit(e):- " choice
-    case $choice in
-        [yY]* ) hugo new "$dir/$filename" && vim "$dir/$filename" && cd "$path" || return ;;
-        [nN]* ) create_file ;;
-        [bB]* ) new_note ;;
-        [eE]* ) return ;;
-        * ) echo "Error, not an option" ;;
-    esac
-}
-
-new_note() {
-    if [ -d ~/notes ]; then
-        continue
-    else
-        clone_notes_repo
+# Hugo
+new_site() {
+    # Make sure user supplies a title
+    if [ -z "$1" ]; then
+        echo 'You must supply a site name, e.g.'
+        echo '  new_site my-new-site'
+        return 1
     fi
-
-    path=~/notes
-    cd "$path/content" || return
-    selector
-    dir=$(pwd | cut -d/ -f 5-)
-    echo "$dir"
-    cd "$path" || return
-    create_file
-}
-
-open_note() {
-    if [ -d ~/notes ]; then
-        continue
-    else
-        clone_notes_repo
-    fi
-
-    path=~/notes
-    cd $path/content || return
-    selector
-    vim "$name"
-    cd "$path" || return
+    
+    hugo new site "$1"
+    cd "$1"
+    git init
+    cp ~/scripts/hugo_new ./new
+    echo "Done with setup!"
 }

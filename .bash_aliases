@@ -19,11 +19,11 @@ alias yd='yadm diff'
 alias yup='yadm fetch; yadm status'
 
 # Directories
-alias ..='cd ..;pwd'
-alias ...='cd ../..;pwd'
-alias ....='cd ../../..;pwd'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias tree='tree --dirsfirst -C'
-alias tree-a="tree -a --dirsfirst -C -I '.git|node_modules'"
+alias trea="tree -a -I '.git|.github|node_modules|resources'"
 alias ls='ls --color'
 alias la='ls -A'
 alias l='ls -CF'
