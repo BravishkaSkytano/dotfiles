@@ -14,15 +14,13 @@ if [[ -z "$1" ]]; then # if user didn't supply parameters
     echo "You must supply parameters, e.g."
     echo "  ./new post TITLE-with-dashes"
     echo "  ./new SECTION SECTION-title page-title"
+else export TITLE="$2"
 fi
 
-if [[ $1 = "post" ]]; then
-    export TYPE="posts"
-    export TITLE="$2"
-fi
+if [[ $1 = "post" ]]; then export TYPE="posts"; fi
 
 if [[ -n $TYPE ]] && [[ -n $TITLE ]]; then # check if type and title have been set
-    hugo new $TYPE/$TITLE.md
+    hugo new "$TYPE/$TITLE.md"
     # Open file
     read -rp "Open? [y/n]: " reply
     case $reply in

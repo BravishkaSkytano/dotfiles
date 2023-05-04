@@ -21,11 +21,11 @@ git_clone() {
     read -rp "Username: " username
     read -rp "Repo: " repo
     git clone https://github.com/$username/$repo.git
+    cd "$repo"
 }
 
 # Managing files
 menu() {
-    EDITOR=vim
     select OPT in "./" *; do
         if [ "$OPT" = "./" ]; then
             CURDIR=$(dirs +0)

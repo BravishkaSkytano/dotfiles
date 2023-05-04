@@ -1,3 +1,5 @@
+export EDITOR="vim"
+
 # Git
 alias gs='git status'
 alias ga='git add'
