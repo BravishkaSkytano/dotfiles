@@ -46,3 +46,7 @@ alias sep='cal -m sep'
 alias oct='cal -m oct'
 alias nov='cal -m nov'
 alias dec='cal -m dec'
+
+# Hugo
+alias hs='hugo server'
+alias hst='hugo server -s exampleSite --themesDir=../.. --disableFastRender'
