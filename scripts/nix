@@ -24,40 +24,46 @@ case $choice in
 	[nN]* ) echo "Skipping..." ;;
 esac
 
-read -rp "Install Neofetch Yes(y) / No (n):- " choice
+read -rp "Install Neofetch:- " choice
 case $choice in
     [yY]* ) nix-env -iA nixpkgs.neofetch ;;
     [nN]* ) echo "Skipping..." ;;
 esac
 
-read -rp "Install Stow? Yes(y) / No (n):- " choice
-case $choice in
-    [yY]* ) nix-env -iA nixpkgs.stow ;;
-    [nN]* ) echo "Skipping..." ;;
-esac
-
-read -rp "Install bat? Yes(y) / No (n):- " choice
+read -rp "Install bat?:- " choice
 case $choice in
     [yY]* ) nix-env -iA nixpkgs.bat ;;
     [nN]* ) echo "Skipping..." ;;
 esac
 
-read -rp "Install fzf Yes(y) / No (n):- " choice
+read -rp "Install fzf:- " choice
 case $choice in
     [yY]* ) nix-env -iA nixpkgs.fzf ;;
     [nN]* ) echo "Skipping..." ;;
 esac
 
-read -rp "Install Go? Yes(y) / No (n):- " choice
+read -rp "Install yadm?:- " choice
+case $choice in
+    [yY]* ) nix-env -iA nixpkgs.yadm ;;
+    [nN]* ) echo "Skipping" ;;
+esac
+
+read -rp "Install Go?:- " choice
 case $choice in
 	[yY]* ) nix-env -iA nixpkgs.go ;;
 	[nN]* ) echo "Skipping..." ;;
 esac
 
-read -rp "Install Hugo? Yes(y) / No(n):- " choice
+read -rp "Install Hugo?:- " choice
 case $choice in
 	[yY]* ) nix-env -iA nixpkgs.hugo ;;
 	[nN]* ) echo "Skipping..." ;;
+esac
+
+read -rp "Install Libreoffice?:- " choice
+case $choice in
+    [yY]* ) nix-env -iA nixpkgs.libreoffice-fresh ;;
+    [nN]* ) echo "Skipping..." ;;
 esac
 
 echo "Done installing packages."
