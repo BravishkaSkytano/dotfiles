@@ -53,10 +53,43 @@ new_site() {
         echo '  new_site my-new-site'
         return 1
     fi
-    
+
     hugo new site "$1"
     cd "$1"
     git init
     cp ~/scripts/hugo_new ./new
     echo "Done with setup!"
+}
+
+log() {
+    YEAR=$(date +%Y)
+    MONTH=$(date +%m)
+    DAY=$(date +%d)
+    ENTRY="diary/$YEAR/$MONTH"
+
+    cd
+    if [ ! -e $ENTRY ]; then mkdir -p $ENTRY; fi
+    cd $ENTRY
+
+    if [ ! -f $DAY.md ]; then
+        # add template data for Hugo
+        TITLE=$(date +"%A, %B %d")
+        DATE=$(date +%F)
+        echo "---
+title: $TITLE
+date: $DATE
+categories: []
+tags: []
+---" >> $DAY.md
+    fi
+
+    echo "" >> $DAY.md # line break
+    date +'## %R' >> $DAY.md
+    echo "" >> $DAY.md # another line break
+    nano $DAY.md
+
+    cd ../..
+    git add $YEAR/$MONTH/$DAY.md
+    git commit -m "Add $MONTH-$DAY"
+    cd
 }
