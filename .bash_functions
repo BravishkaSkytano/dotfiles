@@ -62,6 +62,7 @@ new_site() {
 }
 
 log() {
+	EDITOR=micro
     YEAR=$(date +%Y)
     MONTH=$(date +%m)
     DAY=$(date +%d)
@@ -86,10 +87,10 @@ tags: []
     echo "" >> $DAY.md # line break
     date +'## %R' >> $DAY.md
     echo "" >> $DAY.md # another line break
-    nano $DAY.md
+    $EDITOR $DAY.md
 
     cd ../..
     git add $YEAR/$MONTH/$DAY.md
     git commit -m "Add $MONTH-$DAY"
-    cd
+    git push
 }
