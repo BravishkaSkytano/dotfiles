@@ -66,6 +66,12 @@ case $choice in
     [nN]* ) echo "Skipping..." ;;
 esac
 
+read -rp "Install Telegram Desktop?:- " choice
+case $choice in
+    [yY]* ) nix-env -iA nixpkgs.tdesktop ;;
+    [nN]* ) echo "Skipping..." ;;
+esac
+
 echo "Done installing packages."
 echo "Setup successful."
 echo "Have fun with your new system!"

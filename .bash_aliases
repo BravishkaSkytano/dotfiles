@@ -50,3 +50,6 @@ alias dec='cal -m dec'
 # Hugo
 alias hs='hugo server'
 alias hst='hugo server -s exampleSite --themesDir=../.. --disableFastRender'
+
+# Nix
+alias nix-update='nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert'
