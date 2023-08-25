@@ -1,98 +1,91 @@
 format = """
-[](#9A348E)\
-$os\
 $username\
-[](bg:#DA627D fg:#9A348E)\
+$hostname\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
-$git_branch\
-$git_status\
-[](fg:#FCA17D bg:#86BBD8)\
-$golang\
-$nodejs\
-$nix_shell\
-$python\
-[](fg:#86BBD8 bg:#06969A)\
+$all\
+$fill\
+$status\
 $cmd_duration\
-[](fg:#06969A bg:#33658A)\
+$battery\
+$memory_usage\
 $time\
-[](fg:#33658A)
-\n$character
-"""
+$line_break\
+$os\
+$character"""
 
-# Disable the blank line at the start of the prompt
-add_newline = true
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
 
-# You can also replace your username with a neat symbol like   or disable this
-# and use the os module below
-[username]
-show_always = true
-style_user = "bg:#9A348E"
-style_root = "bg:#9A348E"
-format = '[$user ]($style)'
-disabled = true
+[[battery.display]]
+threshold = 15
+style = "bold red"
 
-# An alternative to the username module which displays a symbol that
-# represents the current operating system
-[os]
-style = "bg:#9A348E"
-disabled = false # Disabled by default
+[[battery.display]]
+threshold = 30
+style = "bold orange"
 
-[directory]
-style = "bg:#DA627D"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+[[battery.display]]
+threshold = 45
+style = "bold yellow"
 
-# Here is how you can shorten some long paths by text replacement
-# similar to mapped_locations in Oh My Posh:
-[directory.substitutions]
-"Documents" = " "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = "  "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important  " = "  "
+[[battery.display]]
+threshold = 60
+style = "bold blue"
 
-[git_branch]
-symbol = ""
-style = "bg:#FCA17D"
-format = '[ $symbol $branch ]($style)'
+[[battery.display]]
+threshold = 75
+style = "bold cyan"
 
-[git_status]
-style = "bg:#FCA17D"
-format = '[$all_status$ahead_behind ]($style)'
-
-[golang]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nix_shell]
-symbol = "❄️ "
-style = "bg:#86BBD8"
-format = '[ [$symbol$state( \($name\))] ]($style)'
-
-[python]
-symbol = "🐍"
-style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)"
+[[battery.display]]
+threshold = 100
+style = "bold green"
 
 [cmd_duration]
-min_time = 500
-style = "bg:#06969A"
-format = '[ took ($duration) ]($style)'
+format = "⌛ [$duration]($style) "
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](purple)"
+
+[container]
+disabled = true
+
+[directory]
+truncation_symbol = '../'
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style)"
+
+[git_status]
+format = '[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)'
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+
+[memory_usage]
+disabled = false
+
+[os]
+disabled = false
+
+[python]
+format = "[$virtualenv]($style) "
+
+[status]
+disabled = false
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
-format = '[ ♥ $time ]($style)'
+format = '🕙 [$time]($style) '
+time_format = '%R'
+
