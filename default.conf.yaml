@@ -6,19 +6,13 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrc: bash/bashrc
-    ~/.bash_aliases: bash/bash_aliases
-    ~/.bash_functions: bash/bash_functions
-    ~/.bash_profile: bash/bash_profile
-    ~/.gitconfig: gitconfig
-    ~/.vimrc: vimrc
-    ~/.config/starship.toml: starship.toml
-
-    # To add a dir use:
-    # ~/dir
-    #   glob: true
-    #   path: dir
-    #   force: true
+    ~/.bashrc: bash/.bashrc
+    ~/.bash_aliases: bash/.bash_aliases
+    ~/.bash_functions: bash/.bash_functions
+    ~/.bash_profile: bash/.bash_profile
+    ~/.gitconfig: .gitconfig
+    ~/.vimrc: vim/.vimrc
+    ~/.config/starship.toml: starship/starship.toml
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
