@@ -1,5 +1,14 @@
+#     _    _                 _ _   _          
+#    / \  | | __ _  ___ _ __(_) |_| |_ _   _  
+#   / _ \ | |/ _` |/ __| '__| | __| __| | | | 
+#  / ___ \| | (_| | (__| |  | | |_| |_| |_| | 
+# /_/   \_\_|\__,_|\___|_|  |_|\__|\__|\__, | 
+#                                      |___/   
+# by Stephan Raabe (2023) 
+# ----------------------------------------------------- 
+#
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-
+#
 # Import additional configuration files
 #
 # Imports are loaded in order, skipping all missing files, with the importing
@@ -39,16 +48,16 @@ window:
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
   #position:
-  # x: 0
-  # y: 0
+  #  x: 0
+  #  y: 0
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
-    y: 10
+    x: 15
+    y: 15
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -68,7 +77,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.8
+  opacity: 0.7
 
   # Startup Mode (changes require restart)
   #
@@ -94,24 +103,12 @@ window:
     # General application class
     #general: Alacritty
 
-  # Decorations theme variant
+  # Decorations theme variant (Linux/BSD only)
   #
-  # Override the variant of the System theme/GTK theme/Wayland client side
-  # decorations. Commonly supported values are `Dark`, `Light`, and `None` for
-  # auto pick-up. Set this to `None` to use the default theme variant.
+  # Override the variant of the GTK theme/Wayland client side decorations.
+  # Commonly supported values are `dark` and `light`. Set this to `None` to use
+  # the default theme variant.
   #decorations_theme_variant: None
-
-  # Resize increments
-  #
-  # Prefer resizing window by discrete steps equal to cell dimensions.
-  #resize_increments: false
-
-  # Make `Option` key behave as `Alt` (macOS only):
-  #   - OnlyLeft
-  #   - OnlyRight
-  #   - Both
-  #   - None (default)
-  #option_as_alt: None
 
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -122,19 +119,19 @@ window:
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    #family: monospace
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
   #bold:
@@ -170,7 +167,7 @@ window:
     #style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -197,10 +194,11 @@ window:
 #draw_bold_text_with_bright_colors: false
 
 # Colors (Tomorrow Night)
-#colors:
+# colors:
   # Default colors
-  #primary:
+  # primary:
   #  background: '#1d1f21'
+  #  background: '#000000'
   #  foreground: '#c5c8c6'
 
     # Bright and dim foreground colors
@@ -461,6 +459,9 @@ window:
 # directory of the parent process will be used.
 #working_directory: None
 
+# Send ESC (\x1b) before characters when alt is pressed.
+#alt_send_esc: true
+
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
 
@@ -575,7 +576,7 @@ window:
 #    - Key0-Key9
 #
 #    A full list with available key codes can be found here:
-#    https://docs.rs/winit/*/winit/event/enum.VirtualKeyCode.html#variants
+#    https://docs.rs/glutin/*/glutin/event/enum.VirtualKeyCode.html#variants
 #
 #    Instead of using the name of the keys, the `key` field also supports using
 #    the scancode of the desired key. Scancodes have to be specified as a
@@ -624,7 +625,6 @@ window:
 #   - Quit
 #       Quit Alacritty.
 #   - ToggleFullscreen
-#   - ToggleMaximized
 #   - SpawnNewInstance
 #       Spawn a new instance of Alacritty.
 #   - CreateNewWindow
@@ -875,7 +875,7 @@ window:
   #- { key: M,              mods: Command,                    action: Minimize              }
   #- { key: Q,              mods: Command,                    action: Quit                  }
   #- { key: W,              mods: Command,                    action: Quit                  }
-  #- { key: N,              mods: Command,                    action: CreateNewWindow       }
+  #- { key: N,              mods: Command,                    action: SpawnNewInstance      }
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
@@ -897,12 +897,6 @@ window:
   #   - Debug
   #   - Trace
   #log_level: Warn
-
-  # Renderer override.
-  #   - glsl3
-  #   - gles2
-  #   - gles2_pure
-  #renderer: None
 
   # Print all received window events.
   #print_events: false
