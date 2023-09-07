@@ -1,37 +1,57 @@
 - defaults:
     link:
       relink: true
-      create: true
 
 - clean: ['~']
 
 - link:
-  ~/.Xresources: gtk/.Xresources
-  ~/.config/alacritty: alacritty/alacritty.yml
-  ~/.config/dunst/dunstrc: dunst/dunstrc
-  ~/.config/gtk-3.0/bookmarks: gtk/gtk-3.0/bookmarks
-  ~/.config/gtk-3.0/settings.ini: gtk/gtk-3.0/settings.ini
-  ~/.config/hypr/hyprland.conf: hypr/hyprland.conf
-  ~/.config/nvim/init.vim: nvim/init.vim
-  ~/.config/ranger/commands.py: ranger/commands.py
-  ~/.config/ranger/commands_full.py: ranger/commands_full.py
-  ~/.config/ranger/rc.conf: ranger/rc.conf
-  ~/.config/ranger/rifle.conf: ranger/rifle.conf
-  ~/.config/ranger/scope.sh: ranger/scope.sh
-  ~/.config/rofi/config.rasi: rofi/config.rasi
-  ~/.config/swaylock/config: swaylock/config
-  ~/.config/vim/.vimrc: vim/.vimrc
-  #~/.config/wal
-  ~/.config/waybar/colors-waybar.css: waybar/colors-waybar.css
-  ~/.config/waybar/config: waybar/config
-  ~/.config/waybar/launch.sh: waybar/launch.sh
-  ~/.config/waybar/modules.json: waybar/modules.json
-  ~/.config/waybar/myconfig: waybar/myconfig
-  ~/.config/waybar/style.css: waybar/style.css
-  ~/.config/wlogout/layout: wlogout/layout
-  ~/.config/wlogout/style.css: wlogout/style.css
-  ~/.gtkrc-2.0: gtk/.gtkrc-2.0
-  ~/.icons/default/index.theme: gtk/.icons/default/index.theme
+    ~/.gtkrc-2.0: gtk/.gtkrc-2.0
+    ~/.Xresources: gtk/.Xresources
+
+    ~/.config/alacritty:
+      glob: true
+      path: alacritty/*
+
+    ~/.config/dunst:
+      glob: true
+      path: dunst/*
+
+    ~/.config/gtk-3.0:
+      glob: true
+      path: gtk/gtk-3.0/*
+
+    ~/.config/hypr:
+      glob: true
+      path: hypr/*
+
+    ~/.config/ranger:
+      glob: true
+      path: ranger/*
+
+    ~/.config/rofi:
+      glob: true
+      path: rofi/*
+    
+    ~/.config/swaylock:
+      glob: true
+      path: swaylock/*
+
+    ~/.config/wal:
+      create: true
+      glob: true
+      path: wal/*
+
+    ~/.config/waybar:
+      glob: true
+      path: waybar/*
+
+    ~/.config/wlogout:
+      glob: true
+      path: wlogout/*
+
+    ~/.icons:
+      glob: true
+      path: gtk/.icons/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

@@ -6,13 +6,23 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrc: bash/.bashrc
-    ~/.bash_aliases: bash/.bash_aliases
-    ~/.bash_functions: bash/.bash_functions
-    ~/.bash_profile: bash/.bash_profile
-    ~/.gitconfig: .gitconfig
-    ~/.vimrc: vim/.vimrc
-    ~/.config/starship.toml: starship/starship.toml
+    ~/:
+      glob: true
+      path: bash/*
+      prefix: '.'
+   
+    ~/.gitconfig: git/gitconfig
+
+    ~/.config/nvim:
+      glob: true
+      path: nvim/*
+
+    ~/.config/vim:
+      glob: true
+      path: vim/*
+      prefix: '.'
+
+    #~/.config/starship.toml: starship/starship.toml
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
