@@ -14,7 +14,7 @@ echo "Changing theme..."
 # ----------------------------------------------------- 
 # Update Wallpaper with pywal
 # ----------------------------------------------------- 
-wal -q -i ~/wallpaper/
+wal -q -i ~/wallpapers/
 
 # ----------------------------------------------------- 
 # Wait for 1 sec
@@ -30,7 +30,7 @@ qtile cmd-obj -o cmd -f reload_config
 # Get new theme
 # ----------------------------------------------------- 
 source "$HOME/.cache/wal/colors.sh"
-newwall=$(echo $wallpaper | sed "s|$HOME/wallpaper/||g")
+newwall=$(echo $wallpaper | sed "s|$HOME/wallpapers/||g")
 
 # ----------------------------------------------------- 
 # Send notification

@@ -12,7 +12,7 @@
 # ----------------------------------------------------- 
 # Select wallpaper
 # ----------------------------------------------------- 
-selected=$(ls -1 ~/wallpaper | grep "jpg" | rofi -dmenu -p "Wallpapers")
+selected=$(ls -1 ~/wallpapers | grep "jpg" | rofi -dmenu -p "Wallpapers")
 
 if [ "$selected" ]; then
 
@@ -20,7 +20,7 @@ if [ "$selected" ]; then
     # ----------------------------------------------------- 
     # Update wallpaper with pywal
     # ----------------------------------------------------- 
-    wal -q -i ~/wallpaper/$selected
+    wal -q -i ~/wallpapers/$selected
 
     # ----------------------------------------------------- 
     # Get new theme
@@ -33,7 +33,7 @@ if [ "$selected" ]; then
     cp ~/.cache/wal/colors-waybar.css ~/dotfiles/waybar/
     cp $wallpaper ~/.cache/current_wallpaper.jpg   
 
-    newwall=$(echo $wallpaper | sed "s|$HOME/wallpaper/||g")
+    newwall=$(echo $wallpaper | sed "s|$HOME/wallpapers/||g")
 
     # ----------------------------------------------------- 
     # Set the new wallpaper
