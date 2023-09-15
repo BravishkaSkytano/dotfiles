@@ -4,7 +4,6 @@
 #  _| |_) | (_| \__ \ | | | | | (__ 
 # (_)_.__/ \__,_|___/_| |_|_|  \___|
 # 
-# by Stephan Raabe (2023)
 # -----------------------------------------------------
 # ~/.bashrc
 # -----------------------------------------------------
@@ -12,6 +11,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='[\u@\h \W]\$ '
+
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+	source ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
+if [ -f ~/.bash_aliases ]; then
+	source ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_functions ]; then
+	source ~/.bash_functions
+fi
 
 # -----------------------------------------------------
 # ALIASES
@@ -72,10 +83,6 @@ alias confq='nvim ~/dotfiles/qtile/config.py'
 alias confp='nvim ~/dotfiles/picom/picom.conf'
 alias confb='nvim ~/dotfiles/.bashrc'
 
-# EDIT NOTES
-
-alias notes='vim ~/notes.txt'
-
 # SYSTEM
 
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -93,15 +100,17 @@ alias r2='hyprctl keyword monitor ,1920x1080,auto,1'
 export PATH="/usr/lib/ccache/bin/:$PATH"
 
 # -----------------------------------------------------
-# START STARSHIP
+# START OH-MY-POSH
 # -----------------------------------------------------
-eval "$(starship init bash)"
+THEME=nordtron
+eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/themes/$THEME.omp.json)"
 
 # -----------------------------------------------------
 # PYWAL
 # -----------------------------------------------------
-cat ~/.cache/wal/sequences
-
+if [ -f ~/.cache/wal/sequences ]; then
+	cat ~/.cache/wal/sequences
+fi
 # -----------------------------------------------------
 # PFETCH
 # -----------------------------------------------------
