@@ -98,6 +98,7 @@ alias r2='hyprctl keyword monitor ,1920x1080,auto,1'
 
 
 export PATH="/usr/lib/ccache/bin/:$PATH"
+export PATH="~/bg2md.rb:$PATH"
 
 # -----------------------------------------------------
 # START OH-MY-POSH
