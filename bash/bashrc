@@ -12,6 +12,25 @@
 [[ $- != *i* ]] && return
 PS1='[\u@\h \W]\$ '
 
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 	source ~/.nix-profile/etc/profile.d/nix.sh
 fi
@@ -43,13 +62,12 @@ alias matrix='cmatrix'
 alias shot='scrot -d 3 -c -z -u'
 alias shotsel='scrot -s'
 alias wifi='nmtui'
-alias od='~/private/onedrive.sh'
 alias rw='~/dotfiles/waybar/reload.sh'
 alias winclass="xprop | grep 'CLASS'"
 
 # Window Managers
 
-alias Qtile='startx'
+# alias Qtile='startx'
 # alias Hyprland="~/dotfiles/hypr/starthypr.sh"
 
 # GIT
@@ -66,8 +84,6 @@ alias gsp="git stash; git pull"
 
 alias w='~/dotfiles/scripts/updatewal.sh'
 alias gr='python ~/dotfiles/scripts/growthrate.py'
-alias ChatGPT='python ~/mychatgpt/mychatgpt.py'
-alias chat='python ~/mychatgpt/mychatgpt.py'
 alias ascii='~/dotfiles/scripts/figlet.sh'
 
 # VIRTUAL MACHINE
@@ -86,7 +102,7 @@ alias confb='nvim ~/dotfiles/.bashrc'
 # SYSTEM
 
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias setkb='setxkbmap de;echo "Keyboard set back to de."'
+alias setkb='setxkbmap en;echo "Keyboard set back to en."'
 
 # -----------------------------------------------------
 # SCREEN RESOLUTINS
@@ -117,3 +133,4 @@ fi
 # -----------------------------------------------------
 echo ""
 pfetch
+macchina
