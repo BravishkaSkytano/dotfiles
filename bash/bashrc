@@ -49,8 +49,12 @@ export PATH="~/bg2md.rb:$PATH"
 # -----------------------------------------------------
 # START OH-MY-POSH
 # -----------------------------------------------------
-THEME=nordtron
-eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/themes/$THEME.omp.json)"
+#THEME=cert
+#THEME=easy-term
+THEME=gruvbox
+#THEME=iterm2
+#THEME=nordtron
+eval "$(oh-my-posh init bash --config ~/.cache/oh-my-posh/themes/$THEME.omp.json)"
 
 # -----------------------------------------------------
 # PYWAL
@@ -62,5 +66,4 @@ fi
 # PFETCH
 # -----------------------------------------------------
 echo ""
-pfetch
 macchina
