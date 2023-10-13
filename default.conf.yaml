@@ -22,8 +22,6 @@
       path: vim/*
       prefix: '.'
 
-    ~/.config/starship.toml: starship/starship.toml
-
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
 

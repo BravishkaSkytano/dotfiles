@@ -54,5 +54,3 @@
       glob: true
       path: gtk/.icons/*
 
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
