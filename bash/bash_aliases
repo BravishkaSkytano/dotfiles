@@ -2,6 +2,8 @@
 # ~/.bash_aliases
 # -----------------------------------------------------
 
+alias sysup='sudo apt update; sudo apt upgrade; nix-channel --update; nix-env --install --attr nixpkgs.nix nixpkgs.cacert; flatpak update'
+
 alias c='clear'
 alias ls='exa -al'
 alias shutdown='systemctl poweroff'
@@ -43,6 +45,7 @@ alias ascii='~/dotfiles/scripts/figlet.sh'
 
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias setkb='setxkbmap en;echo "Keyboard set back to en."'
+alias icons-reload='ln -sfn ~/.nix-profile/share/applications/* ~/.local/share/applications/; ln -sfn ~/.nix-profile/share/icons/hicolor/256x256/apps/* ~/.local/share/icons/hicolor/scalable/apps/; find -L ~/.local/share/applications -type l -delete; find -L ~/.local/share/icons/hicolor/scalable/apps -type l -delete'
 
 # -----------------------------------------------------
 # SCREEN RESOLUTINS
