@@ -9,3 +9,6 @@
 	recurse = true
 [pull]
 	rebase = false
+[safe]
+	directory = .
+	directory = /storage/emulated/0/Obsidian/zettelkasten

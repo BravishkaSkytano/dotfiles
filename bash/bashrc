@@ -31,18 +31,6 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
-	source ~/.nix-profile/etc/profile.d/nix.sh
-fi
-
-if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
-fi
-
-if [ -f ~/.bash_functions ]; then
-	source ~/.bash_functions
-fi
-
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export PATH="~/bg2md.rb:$PATH"
 
