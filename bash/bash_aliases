@@ -27,7 +27,8 @@ alias winclass="xprop | grep 'CLASS'"
 
 # GIT
 
-alias gs="git fetch; git status"
+alias gf="git fetch"
+alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
