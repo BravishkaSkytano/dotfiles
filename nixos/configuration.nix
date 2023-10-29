@@ -45,10 +45,29 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the Budgie Desktop environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.budgie.enable = true;
+  # Enable the GNOME Desktop environement
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable the Xfce desktop environment
+  # services.xserver.desktopManager.xterm.enable = false;
+  # services.xserver.desktopManager.xfce.enable = true;
+  # services.xserver.displayManager.defaultSession = "xfce";
+
+  # Enable the Budgie Desktop environment.
+  # services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.desktopManager.budgie.enable = true;
+
+  # Enable the Awesome window manager
+  # Make sure you copy /run/current-system/sw/etc/xdg/awesome/rc.lua
+  # to ~/.config/awesome/ if needed
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.defaultSession = "none+awesome";
+  # services.xserver.windowManager.awesome.enable = true;
+  # services.xserver.windowManager.awesome.luaModules = with pkgs.luaPackages; [
+      # luarocks # package manager for Lua modules
+      # luadbi-mysql # Database abstraction layer
+  # ];
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -89,22 +108,25 @@
       gammastep
       obsidian
       vivaldi
-      zotero
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-24.8.6"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
     git
+    python3
     unzip
   ];
-
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
