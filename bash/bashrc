@@ -46,14 +46,9 @@ export PATH="/usr/lib/ccache/bin/:$PATH"
 export PATH="~/bg2md.rb:$PATH"
 
 # -----------------------------------------------------
-# START OH-MY-POSH
+# PROMPT
 # -----------------------------------------------------
-#THEME=cert
-#THEME=easy-term
-THEME=gruvbox
-#THEME=iterm2
-#THEME=nordtron
-eval "$(oh-my-posh init bash --config ~/.cache/oh-my-posh/themes/$THEME.omp.json)"
+eval "$(starship init bash)"
 
 # -----------------------------------------------------
 # PYWAL
@@ -61,8 +56,3 @@ eval "$(oh-my-posh init bash --config ~/.cache/oh-my-posh/themes/$THEME.omp.json
 if [ -f ~/.cache/wal/sequences ]; then
 	cat ~/.cache/wal/sequences
 fi
-# -----------------------------------------------------
-# PFETCH
-# -----------------------------------------------------
-echo ""
-macchina

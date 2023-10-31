@@ -5,7 +5,7 @@
 alias sysup='sudo apt update; sudo apt upgrade; nix-channel --update; nix-env --install --attr nixpkgs.nix nixpkgs.cacert; flatpak update'
 
 alias c='clear'
-alias ls='exa -al'
+alias ls='eza -al'
 alias shutdown='systemctl poweroff'
 alias v='nvim'
 alias r='ranger'
