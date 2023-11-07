@@ -6,11 +6,9 @@
 - clean: ['~']
 
 - link:
-    ~/:
-      glob: true
-      path: bash/*
-      prefix: '.'
-   
+    ~/.bashrc: bash/.bashrc
+    ~/.bash_aliases: bash/.bash_aliases   
+    
     ~/.gitconfig: git/gitconfig
 
     ~/.config/nvim:
