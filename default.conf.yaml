@@ -6,10 +6,13 @@
 - clean: ['~']
 
 - link:
+
     ~/.bashrc: bash/.bashrc
     ~/.bash_aliases: bash/.bash_aliases   
     
     ~/.gitconfig: git/gitconfig
+
+    ~/.config/starship.toml: starship/starship.toml
 
     ~/.config/nvim:
       glob: true

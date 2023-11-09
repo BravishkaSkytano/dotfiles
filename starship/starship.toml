@@ -1,0 +1,97 @@
+format = """
+[╭ ](white)\
+[░▒▓](fg:blue)\
+$username\
+[░▒▓](bg:blue fg:purple)\
+$directory\
+[░▒▓](bg:purple fg:cyan)\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$php\
+[░▒▓](bg:cyan fg:green)\
+$time\
+[▓▒░ ](fg:green)\
+$line_break\
+[╰ ](white)\
+$os\
+$cmd_duration\
+$character"""
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[username]
+show_always = true
+style_user = "italic bg:blue"
+style_root = "italic dimmed bg:blue"
+format = '[ $user ]($style)'
+disabled = false
+
+[os]
+#style = "bg:#a3aed2 fg:#090c0c"
+#format = '[ $symbol]($style)'
+disabled = false
+
+[directory]
+style = "italic bg:purple"
+format = "[ $path ]($style)"
+truncation_length = 5
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+style = "italic bg:cyan"
+symbol = "🍣 "
+format = "[ $symbol$branch ]($style)"
+
+[git_commit]
+commit_hash_length = 8
+style = "italic bg:cyan"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+
+[git_status]
+style = "italic bg:cyan"
+format = '[($all_status$ahead_behind )]($style)'
+conflicted = "⚔️ "
+ahead = "🏎️ 💨 ×${count}"
+behind = "🐢 ×${count}"
+diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
+untracked = " 🛤️  ×${count}"
+stashed = "📦 "
+modified = "📝 ×${count}"
+staged = "🗃️  ×${count}"
+renamed = "📛 ×${count}"
+deleted = "🗑️  ×${count}"
+
+[nodejs]
+style = "italic bg:cyan"
+
+[golang]
+style = "italic bg:cyan"
+
+[php]
+style = "italic bg:cyan"
+
+[time]
+disabled = false
+time_format = "🕙 %R" # Hour:Minute Format
+style = "italic bg:green"
+format = '[ $time ]($style)'
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "purple"
