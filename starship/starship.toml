@@ -1,10 +1,7 @@
 format = """
-[╭ ](white)\
-[░▒▓](fg:blue)\
 $username\
-[░▒▓](bg:blue fg:purple)\
+$hostname\
 $directory\
-[░▒▓](bg:purple fg:cyan)\
 $git_branch\
 $git_commit\
 $git_state\
@@ -13,25 +10,28 @@ $nodejs\
 $rust\
 $golang\
 $php\
-[░▒▓](bg:cyan fg:green)\
 $time\
-[▓▒░ ](fg:green)\
 $line_break\
-[╰ ](white)\
-$os\
-$cmd_duration\
-$character"""
+$character\
+$cmd_duration"""
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = " [╰─λ](red)"
+error_symbol = " [×](purple)"
+vimcmd_symbol = " [❮](green)"
 
 [username]
 show_always = true
-style_user = "italic bg:blue"
-style_root = "italic dimmed bg:blue"
-format = '[ $user ]($style)'
+style_user = "italic red"
+style_root = "italic red"
+format = ' [╭─$user]($style)@'
+disabled = false
+
+[hostname]
+format = "[$hostname]($style)"
+style = "bold dimmed red"
+trim_at = "-"
+ssh_only = false
 disabled = false
 
 [os]
@@ -40,8 +40,8 @@ disabled = false
 disabled = false
 
 [directory]
-style = "italic bg:purple"
-format = "[ $path ]($style)"
+style = "italic purple"
+format = " [$path]($style)"
 truncation_length = 5
 truncation_symbol = "…/"
 
@@ -52,20 +52,20 @@ truncation_symbol = "…/"
 "Pictures" = " "
 
 [git_branch]
-style = "italic bg:cyan"
+style = "italic cyan"
 symbol = "🍣 "
-format = "[ $symbol$branch ]($style)"
+format = " [$symbol$branch]($style)"
 
 [git_commit]
 commit_hash_length = 8
-style = "italic bg:cyan"
+style = "italic cyan"
 
 [git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
+format = ' [\($state($progress_current of $progress_total)\)]($style) '
 
 [git_status]
-style = "italic bg:cyan"
-format = '[($all_status$ahead_behind )]($style)'
+style = "italic cyan"
+format = ' [($all_status$ahead_behind)]($style)'
 conflicted = "⚔️ "
 ahead = "🏎️ 💨 ×${count}"
 behind = "🐢 ×${count}"
@@ -78,19 +78,19 @@ renamed = "📛 ×${count}"
 deleted = "🗑️  ×${count}"
 
 [nodejs]
-style = "italic bg:cyan"
+style = "italic cyan"
 
 [golang]
-style = "italic bg:cyan"
+style = "italic cyan"
 
 [php]
-style = "italic bg:cyan"
+style = "italic cyan"
 
 [time]
 disabled = false
 time_format = "🕙 %R" # Hour:Minute Format
-style = "italic bg:green"
-format = '[ $time ]($style)'
+style = "italic green"
+format = ' [$time]($style)'
 
 [cmd_duration]
 format = "[$duration]($style) "
