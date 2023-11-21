@@ -16,15 +16,15 @@ $character\
 $cmd_duration"""
 
 [character]
-success_symbol = " [╰─λ](red)"
+success_symbol = "[╰─λ](red)"
 error_symbol = " [×](purple)"
 vimcmd_symbol = " [❮](green)"
 
 [username]
 show_always = true
-style_user = "italic red"
-style_root = "italic red"
-format = ' [╭─$user]($style)@'
+style_user = "red"
+style_root = "red"
+format = '[╭─$user]($style)@'
 disabled = false
 
 [hostname]
