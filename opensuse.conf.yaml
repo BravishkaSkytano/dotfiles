@@ -1,0 +1,13 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+
+    ~/.config/bspwm:
+      glob: true
+      path: bspwm/*
+

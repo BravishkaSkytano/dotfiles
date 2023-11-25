@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+echo "Updating system..."
+sleep 3
+sudo zypper refresh
+sudo zypper dist-upgrade
+echo "You should reboot your system after kernel updates."
+sleep 3
+
+echo "Installing multimedia codecs..."
+sleep 3
+sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
+sudo zypper refresh
+sudo zypper dist-upgrade --from packman --allow-vendor-change
+sudo zypper install --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec-full vlc-codecs
+
+echo "Installing VSCode..."
+sleep 3
+sudo zypper ar https://packages.microsoft.com/yumrepos/vscode vscode
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo zypper refresh
+sudo zypper install code
+
+echo "Installing BSPWM..."
+sleep 3
+sudo zypper in bspwm sxhkd polybar rofi feh dunst mpd mpclient picom python311-{pywal,pulsemixer,pastel} \
+	xfce4-power-manager ffmpeg i3lock yad viewnior lxappearance gcc make pkgconf-pkg-config \
+	x{backlight,settingsd,clip,colors,randr,rdb,setroot,dpyinfo,set} lib{X11-devel,Xtst-devel}
+echo "Building betterlockscreen..."
+sleep 3
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
+echo "Building ksuperkey..."
+sleep 3
+git clone https://github.com/hanschen/ksuperkey.git
+cd ksuperkey
+make
+cd ..
+rm -rf ksuperkey
+echo "Building networkmanager-dmenu..."
+sleep 3
+cd .local/bin
+wget https://github.com/firecat53/networkmanager-dmenu/raw/main/networkmanager_dmenu
+cd
+
+echo "Done."
+echo "Enjoy your new system!"
