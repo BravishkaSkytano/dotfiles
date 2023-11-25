@@ -4,7 +4,7 @@
 [core]
 	editor = vim
 [credential]
-	helper = libsecret
+	helper = store
 [credential "https://gitlab.com"]
 	helper =
 	helper = !/usr/bin/glab auth git-credential
@@ -12,3 +12,5 @@
 	recurse = true
 [pull]
 	rebase = false
+[safe]
+	directory = /storage/emulated/0/Obsidian/obsidian-vault
