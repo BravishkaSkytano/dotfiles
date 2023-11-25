@@ -4,4 +4,4 @@
 	ignore = dirty
 [submodule "bash"]
 	path = bash
-	url = https://gitlab.com/BravishkaSkytano/bash.git
+	url = https://github.com/BravishkaSkytano/bash.git
