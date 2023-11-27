@@ -6,10 +6,7 @@
 [credential]
 	helper = store
 [credential "https://gitlab.com"]
-	helper =
 	helper = !/usr/bin/glab auth git-credential
-[submodule]
-	recurse = true
 [pull]
 	rebase = false
 [safe]
