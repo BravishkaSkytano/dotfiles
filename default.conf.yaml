@@ -21,7 +21,10 @@
     ~/.config/vim:
       glob: true
       path: vim/*
-      prefix: '.'
+
+    ~/.config/zsh:
+      glob: true
+      path: zsh/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
