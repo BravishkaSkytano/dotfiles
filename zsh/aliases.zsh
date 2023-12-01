@@ -9,12 +9,6 @@ alias l.='eza -ald --color=always --group-directories-first --icons .*' # show o
 alias lg='eza -al --color=always --group-directories-first --icons --git' # show git status
 
 # --------------------------------------------------
-# FILES
-# --------------------------------------------------
-
-[ -x /usr/bin/bat ] && alias cat='bat --style header --style snip --style changes --style header'
-
-# --------------------------------------------------
 # HUGO
 # --------------------------------------------------
 

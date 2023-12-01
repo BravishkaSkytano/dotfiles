@@ -10,7 +10,6 @@
     ~/.bashrc: bash/.bashrc
     ~/.bash_aliases: bash/.bash_aliases   
     ~/.zshrc: zsh/.zshrc
-    ~/.p10k.zsh: zsh/.p10k.zsh
     ~/.gitconfig: .gitconfig
 
     ~/.config/starship.toml: starship/starship.toml
