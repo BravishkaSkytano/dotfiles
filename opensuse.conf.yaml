@@ -7,7 +7,12 @@
 
 - link:
 
+    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+
     ~/.config/bspwm:
       glob: true
       path: bspwm/*
 
+    ~/.config/sxhkd:
+      glob: true
+      path: sxhkd/*
