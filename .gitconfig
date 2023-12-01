@@ -10,4 +10,4 @@
 [pull]
 	rebase = false
 [safe]
-	directory = /storage/emulated/0/Obsidian/obsidian-vault
+	directory = /storage/emulated/0/obsidian-vault
