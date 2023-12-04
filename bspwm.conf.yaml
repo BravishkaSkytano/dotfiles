@@ -16,3 +16,7 @@
     ~/.config/sxhkd:
       glob: true
       path: sxhkd/*
+
+    ~/.config/polybar:
+      glob: true
+      path: polybar/*

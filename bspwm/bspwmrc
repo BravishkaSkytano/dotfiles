@@ -22,7 +22,7 @@ ksuperkey -e 'Super_L=Alt_L|F1' &
 ksuperkey -e 'Super_R=Alt_L|F1' &
 
 # WORKSPACES
-bspc monitor -d 一 二 三 四 五 六 七 八 九 十
+bspc monitor -d I II III IV V VI VII VIII IX X
 
 # WINDOWS
 bspc config border_width         2
