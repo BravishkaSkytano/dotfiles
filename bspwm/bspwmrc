@@ -6,6 +6,7 @@
 killall -9 bspc sxhkd dunst ksuperkey xfce4-power-manager xsettingsd
 
 pgrep -x sxhkd > /dev/null || sxhkd &
+pidof picom 1> /dev/null || picom --config ~/.config/picom.conf &
 
 wal -i ~/wallpapers
 $HOME/.cache/wal/colors.sh

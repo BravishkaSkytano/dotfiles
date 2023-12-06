@@ -6,8 +6,8 @@
 - clean: ['~']
 
 - link:
-
     ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+    ~/.config/picom.conf: picom.conf
 
     ~/.config/bspwm:
       glob: true
@@ -16,3 +16,7 @@
     ~/.config/sxhkd:
       glob: true
       path: sxhkd/*
+
+    ~/.config/polybar:
+      glob: true
+      path: polybar/*
