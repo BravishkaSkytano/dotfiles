@@ -5,10 +5,16 @@
 
 - clean: ['~']
 
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
 - link:
 
     ~/.bashrc: bash/.bashrc
-    ~/.bash_aliases: bash/.bash_aliases   
+    ~/.bash_aliases: bash/.bash_aliases
     ~/.zshrc: zsh/.zshrc
     ~/.gitconfig: .gitconfig
 
@@ -18,7 +24,7 @@
       glob: true
       path: nvim/*
 
-    ~/.config/vim:
+    ~/.vim:
       glob: true
       path: vim/*
 
@@ -28,4 +34,3 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-
