@@ -1,7 +1,7 @@
 #  ███████╗██╗  ██╗██╗  ██╗██╗  ██╗██████╗ ██████╗  ██████╗
 #  ██╔════╝╚██╗██╔╝██║  ██║██║ ██╔╝██╔══██╗██╔══██╗██╔════╝
-#  ███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║██████╔╝██║     
-#  ╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║██╔══██╗██║     
+#  ███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║██████╔╝██║
+#  ╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║██╔══██╗██║
 #  ███████║██╔╝ ██╗██║  ██║██║  ██╗██████╔╝██║  ██║╚██████╗
 #  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
 #	z0mbi3			https://github.com/gh0stzk/dotfiles
@@ -104,7 +104,7 @@ super + alt + r
 # close and kill
 super + {_,shift + }q
 	bspc node -{c,k}
-	
+
 # Reload Keybindings
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
@@ -150,9 +150,9 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus or send to the given desktop
-super + ctrl + {1-9,0}
-	bspc {node -d} '^{1-9,10}' '--follow'
-	
+super + {_,ctrl + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}' '--follow'
+
 # Send focused Node to workspace directionally
 super + ctrl + shift + {Left,Right}
 	bspc node -d {prev,next} '--follow'
@@ -172,7 +172,7 @@ super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #####
-	
+
 # expand a window
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}

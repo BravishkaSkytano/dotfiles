@@ -20,10 +20,6 @@
       glob: true
       path: ncmpcpp/*
 
-    ~/.config/nvim:
-      glob: true
-      path: nvim/*
-
     ~/.config/ranger:
       glob: true
       path: ranger/*

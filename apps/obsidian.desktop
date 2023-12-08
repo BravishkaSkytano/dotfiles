@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.4.16
+Type=Application
+Terminal=false
+Exec=/home/yoela/AppImages/Obsidian.AppImage
+Name=Obsidian
+Icon=obsidian
+MimeType=x-scheme-handler/obsidian;
