@@ -13,10 +13,13 @@
 
 - link:
 
-    ~/.bashrc: bash/.bashrc
-    ~/.bash_aliases: bash/.bash_aliases
-    ~/.zshrc: zsh/.zshrc
     ~/.gitconfig: .gitconfig
+    ~/.zshrc: zsh/zshrc
+
+    ~/:
+      glob: true
+      path: bash/*
+      exclude: [ .git/* ]
 
     ~/.config/starship.toml: starship/starship.toml
 
@@ -31,6 +34,24 @@
     ~/.config/zsh:
       glob: true
       path: zsh/*
+      exclude: [ zshrc ]
+
+    ~/.local/bin:
+      glob: true
+      path: bin/*
+
+    ~/.local/share/applications:
+      glob: true
+      path: apps/*
+
+    ~/.local/share/fonts:
+      glob: true
+      path: fonts/*
+
+    ~/.local/share/asciiart:
+      glob: true
+      path: asciiart/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [fc-cache -rv >/dev/null 2>&1, Reloading fonts cache]

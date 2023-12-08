@@ -3,20 +3,27 @@
       relink: true
       create: true
 
-- clean: ['~']
-
 - link:
-    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
-    ~/.config/picom.conf: picom.conf
+    ~/.config/alacritty:
+      glob: true
+      path: alacritty/*
 
     ~/.config/bspwm:
       glob: true
       path: bspwm/*
 
-    ~/.config/sxhkd:
+    ~/.config/mpd:
       glob: true
-      path: sxhkd/*
+      path: mpd/*
 
-    ~/.config/polybar:
+    ~/.config/ncmpcpp:
       glob: true
-      path: polybar/*
+      path: ncmpcpp/*
+
+    ~/.config/nvim:
+      glob: true
+      path: nvim/*
+
+    ~/.config/ranger:
+      glob: true
+      path: ranger/*
