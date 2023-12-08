@@ -34,7 +34,7 @@
     ~/.config/zsh:
       glob: true
       path: zsh/*
-      exclude: [ zshrc ]
+      exclude: [ zsh/zshrc ]
 
     ~/.local/bin:
       glob: true
