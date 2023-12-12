@@ -133,4 +133,5 @@ alias lg='eza -al --color=always --group-directories-first --icons --git' # show
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴
-$HOME/.local/bin/colorscript -r
+#$HOME/.local/bin/colorscript -r
+(cat ~/.cache/wal/sequences &)

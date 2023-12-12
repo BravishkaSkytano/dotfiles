@@ -19,13 +19,12 @@
     ~/:
       glob: true
       path: bash/*
-      exclude: [ .git/* ]
 
     ~/.config/starship.toml: starship/starship.toml
 
     ~/.config/nvim:
       glob: true
-      path: nvim/*
+      path: nvim
 
     ~/.vim:
       glob: true
@@ -38,7 +37,7 @@
 
     ~/.local/bin:
       glob: true
-      path: bin/*
+      path: bin
 
     ~/.local/share/applications:
       glob: true
@@ -46,12 +45,12 @@
 
     ~/.local/share/fonts:
       glob: true
-      path: fonts/*
+      path: fonts
 
     ~/.local/share/asciiart:
       glob: true
-      path: asciiart/*
+      path: asciiart
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [fc-cache -rv >/dev/null 2>&1, Reloading fonts cache]
+    #- [fc-cache -rv >/dev/null 2>&1, Reloading fonts cache]

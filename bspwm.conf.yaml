@@ -6,20 +6,20 @@
 - link:
     ~/.config/alacritty:
       glob: true
-      path: alacritty/*
+      path: alacritty
 
     ~/.config/bspwm:
       glob: true
-      path: bspwm/*
+      path: bspwm
 
     ~/.config/mpd:
       glob: true
-      path: mpd/*
+      path: mpd
 
     ~/.config/ncmpcpp:
       glob: true
-      path: ncmpcpp/*
+      path: ncmpcpp
 
     ~/.config/ranger:
       glob: true
-      path: ranger/*
+      path: ranger
