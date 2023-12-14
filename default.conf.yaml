@@ -43,14 +43,10 @@
       glob: true
       path: apps/*
 
-    ~/.local/share/fonts:
+    ~/.fonts:
       glob: true
-      path: fonts
-
-    ~/.local/share/asciiart:
-      glob: true
-      path: asciiart
+      path: fonts/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-    #- [fc-cache -rv >/dev/null 2>&1, Reloading fonts cache]
+  - [fc-cache -rv >/dev/null 2>&1, Reloading fonts cache]
