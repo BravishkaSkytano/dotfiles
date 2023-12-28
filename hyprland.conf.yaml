@@ -1,0 +1,25 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- link:
+    ~/.config/alacritty:
+      glob: true
+      path: alacritty
+
+    ~/.config/bspwm:
+      glob: true
+      path: bspwm
+
+    ~/.config/mpd:
+      glob: true
+      path: mpd
+
+    ~/.config/ncmpcpp:
+      glob: true
+      path: ncmpcpp
+
+    ~/.config/ranger:
+      glob: true
+      path: ranger
