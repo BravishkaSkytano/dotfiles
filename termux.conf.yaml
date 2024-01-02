@@ -1,0 +1,10 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- link:
+
+  ~/.shortcuts:
+      glob: true
+      path: termux-shortcuts/*

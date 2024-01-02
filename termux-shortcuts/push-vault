@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+cd ~/storage/shared/Documents/Obsidian
+git add -A
+git commit -m "Android $(git diff --cached --numstat | wc -l) files ($(date +%m-%d,%k%M))"
+git push
