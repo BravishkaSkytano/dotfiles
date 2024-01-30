@@ -2,9 +2,4 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "bash"]
-	path = bash
-	url = https://github.com/BravishkaSkytano/bash.git
-[submodule "hyprland"]
-	path = hyprland
-	url = https://github.com/BravishkaSkytano/hyprland.git
+
