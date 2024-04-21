@@ -1,0 +1,93 @@
+# .bashrc
+
+# Inspiration from all over the internet
+# Special mention: Jake@Linux
+# He does a lot of stuff with Bash and I love it <3
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# --------------------------------------------------
+# IMPORTS
+# --------------------------------------------------
+
+. ~/.bash_aliases
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi
+
+# Import colorscheme from 'wal' asynchronously
+# & # Run the process in the background.
+# ( ) # Hide shell job control messages.
+# Not supported in the "fish" shell.
+(cat ~/.cache/wal/sequences &)
+
+# Alternative (blocks terminal for 0-3ms)
+#cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh
+
+# --------------------------------------------------
+# EXPORTS
+# --------------------------------------------------
+
+export BROWSER="vivaldi-stable"
+export EDITOR="micro"
+export VISUAL="micro"
+#export PATH="$PATH:$HOME/.local/scripts/:$HOME/.local/bin/:$HOME/.local/scripts/dmenu/:$HOME/.cargo/bin"
+#export CDPATH=".:$HOME:$HOME/.config/:$HOME/.local/:$HOME/.local/share/:$HOME/.local/programs"
+export CSCOPE_EDITOR="micro"
+
+# --------------------------------------------------
+# SHELL OPTIONS
+# --------------------------------------------------
+
+# Load starship prompt if starship is installed
+[ -x /usr/bin/starship ] || [ -x ~/.nix-profile/bin/starship ] && eval "$(starship init bash)"
+#[ -x /usr/bin/neofetch ] && neofetch
+
+# --------------------------------------------------
+# FUNCTIONS
+# --------------------------------------------------
+
+# git backup
+gb () {
+        if [ "$(hostname)" = "localhost" ]; then
+                read -rp "Provide hostname: " hn
+                echo "Set hostname with"
+                echo "  sudo hostnamectl set-hostname new-name"
+                echo "to prevent this message."
+                git add . && \
+                git commit -m "$hn $(git diff --cached --numstat | wc -l) files ($(date +%R))" && \
+                git push
+        else
+                git add . && \
+                git commit -m "$(hostname) $(git diff --cached --numstat | wc -l) files ($(date +%R))" && \
+                git push
+        fi
+}
+
+# archive extract
+ex ()
+{
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1   ;;
+        *.tar.gz)    tar xzf $1   ;;
+        *.bz2)       bunzip2 $1   ;;
+        *.rar)       unrar x $1   ;;
+        *.gz)        gunzip $1    ;;
+        *.tar)       tar xf $1    ;;
+        *.tbz2)      tar xjf $1   ;;
+        *.tgz)       tar xzf $1   ;;
+        *.zip)       unzip $1     ;;
+        *.Z)         uncompress $1;;
+        *.7z)        7za e x $1   ;;
+        *.deb)       ar x $1      ;;
+        *.tar.xz)    tar xf $1    ;;
+        *.tar.zst)   unzstd $1    ;;
+        *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}

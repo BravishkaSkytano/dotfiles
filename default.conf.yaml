@@ -19,7 +19,8 @@
     ~/:
       glob: true
       path: bash/*
-
+      prefix: '.'
+      
     ~/.config/starship.toml: starship/starship.toml
 
     ~/.config/nvim:
@@ -37,7 +38,7 @@
 
     ~/.local/bin:
       glob: true
-      path: bin
+      path: bin/*
 
     ~/.local/share/applications:
       glob: true
@@ -48,5 +49,4 @@
       path: fonts/*
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
   - [fc-cache -rv >/dev/null 2>&1, Reloading fonts cache]
