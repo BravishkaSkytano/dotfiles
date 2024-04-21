@@ -1,0 +1,92 @@
+format = """
+[╔═══════════════════════════════════](bold green)\
+$line_break\
+[║](bold green)\
+$os\
+$username\
+$hostname\
+$directory\
+$cmd_duration\
+$all\
+$line_break\
+[╠═══════════════════════════════════](bright-black)\
+$line_break\
+[╚═](bright-black)\
+$character"""
+
+[directory]
+style = "bold blue"
+truncation_length = 8
+truncation_symbol = '…/'
+
+[character]
+success_symbol = "[](bright-black)"
+error_symbol = "[](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+#style = "bright-black"
+
+[git_status]
+style = "cyan"
+
+[git_state]
+style = "bright-black"
+
+[cmd_duration]
+style = "yellow"
+
+[python]
+style = "bright-black"
+
+[nodejs]
+style = "bright-black"
+
+[os]
+disabled = false
+format = '[ $symbol ]($style)'
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "

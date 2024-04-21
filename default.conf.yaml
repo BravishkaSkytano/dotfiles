@@ -13,19 +13,20 @@
 
 - link:
 
-    ~/.gitconfig: .gitconfig
+    ~/.gitconfig: gitconfig
     ~/.zshrc: zsh/zshrc
-
+    ~/.profile: profile
+    
     ~/:
       glob: true
       path: bash/*
       prefix: '.'
       
-    ~/.config/starship.toml: starship/starship.toml
+    ~/.config/starship.toml: starship.toml
 
-    ~/.config/nvim:
-      glob: true
-      path: nvim
+    #~/.config/nvim:
+      #glob: true
+      #path: nvim
 
     ~/.vim:
       glob: true
@@ -46,7 +47,4 @@
 
     ~/.fonts:
       glob: true
-      path: fonts/*
-
-- shell:
-  - [fc-cache -rv >/dev/null 2>&1, Reloading fonts cache]
+      path: fonts

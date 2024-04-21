@@ -1,6 +1,14 @@
 # .bash_aliases
 
-alias c='clear'
+alias cl='clear'
+alias reload-fonts='fc-cache -rv >/dev/null 2>&1'
+alias update="sudo xbps-install -Syu"
+alias po="sudo shutdown -h now"
+alias rs="sudo reboot"
+
+# --------------------------------------------------
+# HELP
+# --------------------------------------------------
 alias autostart='echo "ln -s /usr/share/applications/<app>.desktop /etc/xdg/autostart/"'
 alias runitservice='echo "ln -s /etc/sv/<service> /var/service/"'
 
