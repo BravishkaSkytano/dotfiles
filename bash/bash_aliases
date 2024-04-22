@@ -2,9 +2,13 @@
 
 alias cl='clear'
 alias reload-fonts='fc-cache -rv >/dev/null 2>&1'
-alias update="sudo xbps-install -Syu"
-alias po="sudo shutdown -h now"
-alias rs="sudo reboot"
+
+alias update='sudo xbps-install -Su'
+alias clean='sudo xbps-remove -yoO'
+alias kpurge='sudo vkpurge rm all'
+
+alias po='sudo shutdown -h now'
+alias rs='sudo reboot'
 
 # --------------------------------------------------
 # HELP
