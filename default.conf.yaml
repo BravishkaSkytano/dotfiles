@@ -16,12 +16,14 @@
     ~/.gitconfig: gitconfig
     ~/.zshrc: zsh/zshrc
     ~/.profile: profile
+    ~/.xinitrc: xinitrc
     
     ~/:
       glob: true
       path: bash/*
       prefix: '.'
-      
+
+    ~/.config/autostart.sh: autostart.sh  
     ~/.config/starship.toml: starship.toml
 
     #~/.config/nvim:

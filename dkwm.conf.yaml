@@ -12,6 +12,10 @@
       glob: true
       path: dkwm
 
+    ~/.config/rofi:
+      glob: true
+      path: rofi
+      
     #~/.config/mpd:
       #glob: true
       #path: mpd

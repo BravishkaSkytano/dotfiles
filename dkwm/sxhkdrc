@@ -6,7 +6,7 @@ super + m
 	dmenu_run
 
 super + {r,d,w}
-    rofi -show {run,drun,window}
+    rofi -show {run,drun,window} -show-icons
 
 # terminal
 super + Return
@@ -18,7 +18,7 @@ super + Return
 
 # dedicated volume keys
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
-	pamixer {-i,-d} 2
+	pamixer {-i,-d} 5
 
 # dedicated backlight keys
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
