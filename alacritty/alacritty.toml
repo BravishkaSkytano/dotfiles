@@ -9,6 +9,12 @@ unfocused_hollow = false
 blinking = "On"
 shape = "Block"
 
+[font]
+size = 10
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
 [selection]
 save_to_clipboard = false
 

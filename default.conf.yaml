@@ -34,6 +34,10 @@
       glob: true
       path: vim/*
 
+    ~/.config/redshift:
+      glob: true
+      path: redshift
+      
     ~/.config/zsh:
       glob: true
       path: zsh/*
