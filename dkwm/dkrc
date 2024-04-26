@@ -14,15 +14,8 @@ if hash sxhkd >/dev/null 2>&1; then
 	sxhkd -c "$HOME/.config/dk/sxhkdrc" &
 fi
 
-# Autostart (check .xinitrc)
-#pidof -q picom || { picom & }
-#"$HOME"/.config/polybar/launch.sh
-#feh --no-fehbg --bg-fill --randomize ~/Pictures/Wallpapers/*
-#wal -i "$HOME/Pictures/Wallpapers/"
-#. "${HOME}/.cache/wal/colors.sh"
-#pidof -q pipewire || { pipewire & }
-#pidof -q syncthing || { syncthing & }
-#pidof -q redshift || { redshift & }
+# Autostart
+"$HOME"/.config/polybar/launch.sh
 "$HOME"/.config/autostart.sh
 
 # spawn a scratchpad terminal if not already (see sxhkdrc and rules for bind and setup)

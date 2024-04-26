@@ -4,10 +4,6 @@
       create: true
 
 - link:
-    ~/.config/alacritty:
-      glob: true
-      path: alacritty
-
     ~/.config/bspwm:
       glob: true
       path: bspwm

@@ -4,10 +4,6 @@
       create: true
 
 - link:
-    ~/.config/alacritty:
-      glob: true
-      path: alacritty
-
     ~/.config/dk:
       glob: true
       path: dkwm

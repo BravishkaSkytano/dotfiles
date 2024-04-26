@@ -9,10 +9,6 @@
   # ~/.gtkrc-2.0: gtk/.gtkrc-2.0
   # ~/.Xresources: gtk/.Xresources
 
-    #~/.config/alacritty:
-      #glob: true
-      #path: alacritty/*
-
     ~/.config/dunst:
       glob: true
       path: dunst/*
@@ -21,34 +17,25 @@
     # glob: true
     # path: gtk/gtk-3.0/*
 
-    ~/.config/hypr:
-      glob: true
-      path: hypr/*
-
     ~/.config/ranger:
       glob: true
-      path: ranger/*
+      path: ranger
 
     ~/.config/rofi:
       glob: true
-      path: rofi/*
+      path: rofi
     
     ~/.config/swaylock:
       glob: true
-      path: swaylock/*
-
-    ~/.config/wal:
-      create: true
-      glob: true
-      path: wal/*
+      path: swaylock
 
     ~/.config/waybar:
       glob: true
-      path: waybar/*
+      path: waybar
 
     ~/.config/wlogout:
       glob: true
-      path: wlogout/*
+      path: wlogout
 
     #~/.icons:
     # glob: true
