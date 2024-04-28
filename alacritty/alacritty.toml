@@ -1,4 +1,3 @@
-import = ["/home/yoela/.config/alacritty/fonts.toml"]
 live_config_reload = true
 
 [cursor]
@@ -11,9 +10,12 @@ shape = "Block"
 
 [font]
 size = 10
+builtin_box_drawing = true
 
-[font.normal]
-family = "JetBrainsMono Nerd Font"
+normal = { family = "JetBrainsMono NF", style = "Regular" }
+bold = { family = "JetBrainsMono NF", style = "Bold" }
+italic = { family = "JetBrainsMono NF", style = "Italic" }
+bold_italic = { family = "JetBrainsMono NF", style = "Bold Italic" }
 
 [selection]
 save_to_clipboard = false
