@@ -1,31 +1,37 @@
-#!/bin/sh
-
-# example dkrc to show some basic command usage and error reporting
+#!/usr/bin/env bash
 
 # determine where to place the log file
 logfile="$HOME/.dkrc.log"
 [ -d "$HOME/.local/share/xorg" ] && logfile="$HOME/.local/share/xorg/dkrc.log"
 : > "$logfile"
 
-
-# (re)load sxhkd for keybinds
-if hash sxhkd >/dev/null 2>&1; then
-	pkill sxhkd
-	sxhkd -c "$HOME/.config/dk/sxhkdrc" &
-fi
-
 # Autostart
-"$HOME"/.config/polybar/launch.sh
+# First terminate already running processes
+processes=("polybar" "sxhkd" "dunst")
+
+for process in "${processes[@]}"; do
+	if pgrep -f "$process"; then
+		pkill -9 -f "$process" > /dev/null; sleep 0.1
+	fi
+done
+
+sxhkd -c "$HOME/.config/dk/sxhkdrc" &
+
+#"$HOME"/.config/polybar/launch.sh
+echo "---" | tee -a /tmp/polybar_hack-top.log /tmp/polybar_hack-bottom.log
+#polybar main 2>&1 | tee -a /tmp/polybar.log & disown
+#polybar main -c ~/.config/polybar/docky/config.ini 2>&1 | tee -a /tmp/polybar_docky.log & disown
+polybar top -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-top.log & disown
+polybar bottom -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-bottom.log & disown
+
+dunst &
 pidof -q picom || { picom & }
 pidof -q pipewire || { pipewire & }
 pidof -q xfce4-power-manager || { xfce4-power-manager & }
-pidof -q dunst || { dunst & }
 pidof -q syncthing || { syncthing & }
 pidof -q redshift || { redshift & }
 
-wal_dir="$HOME/Pictures/wallpapers"
-wal_dir=$(find $wal_dir | shuf -n 1)
-wal -i "$wal_dir"
+"$HOME"/scripts/pywal.sh
 . "$HOME"/.cache/wal/colors.sh
 
 # spawn a scratchpad terminal if not already (see sxhkdrc and rules for bind and setup)
@@ -66,12 +72,12 @@ fi
 
 	# change workspace names (default: number == name)
 	dkcmd set \
-		ws=1  name="code" \
-		ws=2  name="web" \
-	 	ws=3  name="office" \
-	 	ws=4  name="steam" \
-	# 	ws=5  name="5" \
-	# 	ws=6  name="6" \
+		ws=1  name="1" \
+		ws=2  name="2" \
+	 	ws=3  name="3" \
+	 	ws=4  name="4" \
+	 	ws=5  name="5" \
+	 	ws=6  name="6" \
 
 	# enable static workspaces and assign them to monitors (only relevant for multiple monitors)
 	# aside -

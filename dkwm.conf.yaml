@@ -20,6 +20,10 @@
       #glob: true
       #path: ncmpcpp
 
+    ~/.config/polybar:
+      glob: true
+      path: polybar
+      
     #~/.config/ranger:
       #glob: true
       #path: ranger
