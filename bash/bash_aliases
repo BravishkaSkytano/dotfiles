@@ -1,20 +1,20 @@
 # .bash_aliases
 
 alias cl='clear'
-alias reload-fonts='fc-cache -rv >/dev/null 2>&1'
+alias fr='fc-cache -rv >/dev/null 2>&1'
 
 alias update='sudo xbps-install -Su'
 alias clean='sudo xbps-remove -oO'
 alias kpurge='sudo vkpurge rm all'
 
-alias po='sudo shutdown -h now'
-alias rs='sudo reboot'
+alias bye='echo "See you later!" && sleep 2 && sudo shutdown -h now'
+alias rb='echo "See you soon! && sleep 2 && sudo reboot'
 
 # --------------------------------------------------
 # HELP
 # --------------------------------------------------
 alias autostart='echo "ln -s /usr/share/applications/<app>.desktop /etc/xdg/autostart/"'
-alias runitservice='echo "ln -s /etc/sv/<service> /var/service/"'
+alias service='echo "ln -s /etc/sv/<service> /var/service/"'
 
 # --------------------------------------------------
 # DIRECTORIES
@@ -31,6 +31,8 @@ alias ll='eza -al --color=always --group-directories-first --icons' # long forma
 alias lt='eza -aT --color=always --group-directories-first --icons --ignore-glob=".git|node_modules|dotbot"' # tree listing
 alias l.='eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
 alias lg='eza -al --color=always --group-directories-first --icons --git' # show git status
+
+alias dots='cd ~/.dotfiles && git status'
 
 # --------------------------------------------------
 # GIT
@@ -50,7 +52,11 @@ alias gsp="git stash; git pull"
 # FILES
 # --------------------------------------------------
 
-[ -x /usr/bin/bat ] && alias bat='bat --style header --style snip --style changes --style header'
+#[ -x /usr/bin/bat ] && alias bat='bat --style header --style snip --style changes --style header'
+alias brc='${EDITOR:-nano} ~/.bashrc'
+alias barc='${EDITOR:-nano} ~/.bash_aliases'
+alias dkrc='${EDITOR:-nano} ~/.config/dk/dkrc'
+alias bar='${EDITOR:-nano} ~/.config/polybar/config.ini'
 
 # --------------------------------------------------
 # HUGO
