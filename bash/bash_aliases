@@ -8,7 +8,7 @@ alias clean='sudo xbps-remove -oO'
 alias kpurge='sudo vkpurge rm all'
 
 alias bye='echo "See you later!" && sleep 2 && sudo shutdown -h now'
-alias rb='echo "See you soon! && sleep 2 && sudo reboot'
+alias rb='echo "See you soon!" && sleep 2 && sudo reboot'
 
 # --------------------------------------------------
 # HELP
