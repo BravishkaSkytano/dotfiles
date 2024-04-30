@@ -8,22 +8,26 @@
       glob: true
       path: dkwm
 
+    ~/.config/dunst:
+      glob: true
+      path: dunst
+      
     ~/.config/rofi:
       glob: true
       path: rofi
       
-    #~/.config/mpd:
-      #glob: true
-      #path: mpd
+    ~/.config/mpd:
+      glob: true
+      path: mpd
 
-    #~/.config/ncmpcpp:
-      #glob: true
-      #path: ncmpcpp
+    ~/.config/ncmpcpp:
+      glob: true
+      path: ncmpcpp
 
     ~/.config/polybar:
       glob: true
       path: polybar
       
-    #~/.config/ranger:
-      #glob: true
-      #path: ranger
+    ~/.config/ranger:
+      glob: true
+      path: ranger

@@ -18,9 +18,8 @@ done
 sxhkd -c "$HOME/.config/dk/sxhkdrc" &
 
 #"$HOME"/.config/polybar/launch.sh
-echo "---" | tee -a /tmp/polybar_hack-top.log /tmp/polybar_hack-bottom.log
-#polybar main 2>&1 | tee -a /tmp/polybar.log & disown
-#polybar main -c ~/.config/polybar/docky/config.ini 2>&1 | tee -a /tmp/polybar_docky.log & disown
+#polybar main 2>&1 || tee -a /tmp/polybar.log & disown
+#polybar main -c ~/.config/polybar/docky/config.ini 2>&1 || tee -a /tmp/polybar_docky.log & disown
 polybar top -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-top.log & disown
 polybar bottom -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-bottom.log & disown
 
@@ -149,6 +148,7 @@ fi
 	# open window(s) on a specific workspace (assigned monitor)
 	dkcmd rule class="^vivaldi-stable$" ws=2
 	dkcmd rule class="^Zettlr$" ws=3
+	dkcmd rule class="^steam$" ws=5
 
 	# open window(s) on a monitor by number or name (active workspace on monitor)
 	# dkcmd rule class="^chromium$" mon="HDMI-A-0"
