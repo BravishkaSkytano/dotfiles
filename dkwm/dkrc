@@ -148,7 +148,10 @@ fi
 	# open window(s) on a specific workspace (assigned monitor)
 	dkcmd rule class="^vivaldi-stable$" ws=2
 	dkcmd rule class="^Zettlr$" ws=3
-	dkcmd rule class="^steam$" ws=5
+	dkcmd rule class="^thunar$" ws=4
+	dkcmd rule class="^Zotero$" ws=4
+	dkcmd rule class="^steam$" ws=6
+	dkcmd rule class="^steam_app$" ws=5
 
 	# open window(s) on a monitor by number or name (active workspace on monitor)
 	# dkcmd rule class="^chromium$" mon="HDMI-A-0"

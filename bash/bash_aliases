@@ -3,12 +3,12 @@
 alias cl='clear'
 alias fr='fc-cache -rv >/dev/null 2>&1'
 
-alias update='sudo xbps-install -Su'
+alias update='sudo xbps-install -Su && flatpak update'
 alias clean='sudo xbps-remove -oO'
 alias kpurge='sudo vkpurge rm all'
 
-alias bye='echo "See you later!" && sleep 2 && sudo shutdown -h now'
-alias rb='echo "See you soon!" && sleep 2 && sudo reboot'
+alias bye='echo "See you later!" && sleep 1 && sudo shutdown -h now'
+alias rb='echo "See you soon!" && sleep 1 && sudo reboot'
 
 # --------------------------------------------------
 # HELP

@@ -3,7 +3,7 @@
 xset r rate 250 60
 xbacklight -set 10
 xscreensaver &
-xautolock -time 10 -locker betterlockscreen -u "$(< "${HOME}/.cache/wal/wal")" -l
+betterlockscreen -u "$(< "$HOME/.cache/wal/wal")" -l
 
 # Window Manager / Compositor
 #exec dbus-run-session -- dk

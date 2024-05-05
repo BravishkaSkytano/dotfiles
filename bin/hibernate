@@ -1,0 +1,7 @@
+sudo sleep 0.1 # To get auth
+
+betterlockscreen -u "$(< "$HOME/.cache/wal/wal")" -l
+
+sleep 3
+
+echo disk | sudo tee /sys/power/state # Requires sufficient swap space

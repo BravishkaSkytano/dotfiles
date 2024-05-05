@@ -1,0 +1,9 @@
+sudo sleep 0.1 # To get auth
+
+betterlockscreen -u "$(< "$HOME/.cache/wal/wal")" -l
+
+sleep 3
+
+echo deep | sudo tee /sys/power/mem_sleep
+
+echo mem | sudo tee /sys/power/state
