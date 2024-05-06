@@ -2,12 +2,10 @@
 	name = Yoela O
 	email = 65601594+BravishkaSkytano@users.noreply.github.com 
 [core]
-	editor = vim
+	editor = micro
 [credential]
 	helper = store
 [credential "https://gitlab.com"]
 	helper = !/usr/bin/glab auth git-credential
 [pull]
 	rebase = false
-[safe]
-	directory = /storage/emulated/0/obsidian-vault

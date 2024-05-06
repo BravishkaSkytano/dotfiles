@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Obsidian
+Exec=/home/yoela/.local/bin/Obsidian.AppImage
+Terminal=false
+Type=Application
+#Icon=/home/yoela/.cache/thumbnails/normal/60d7302b46542d9442784cee19c19f59.png
+Icon=obsidian
+Comment=Markdown-based knowledge base
+Categories=Office;
