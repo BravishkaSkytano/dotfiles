@@ -8,3 +8,6 @@ wal_dir=$(find $wal_dir | shuf -n 1)
 
 # Set random wallpaper
 wal -i "$wal_dir"
+
+# Cache for lockscreen
+betterlockscreen -u "$(< "$HOME/.cache/wal/wal")"

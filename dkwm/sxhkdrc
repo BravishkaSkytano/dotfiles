@@ -2,6 +2,9 @@
 #########################################################
 
 # launcher
+alt + F2
+	jgmenu_run
+
 super + m
 	dmenu_run
 
@@ -31,11 +34,13 @@ XF86AudioMute
 super + {Insert,Delete}
 	pamixer {-i,-d} 2
 
+# lock screen
+super + ctrl + l
+	betterlockscreen -l dim
+
 # reload sxhkd
 super + shift + x
 	pkill -USR1 -x sxhkd
-
-
 
 # quit dk
 super + shift + q

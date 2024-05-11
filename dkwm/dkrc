@@ -5,38 +5,40 @@ logfile="$HOME/.dkrc.log"
 [ -d "$HOME/.local/share/xorg" ] && logfile="$HOME/.local/share/xorg/dkrc.log"
 : > "$logfile"
 
-# Autostart
-# First terminate already running processes
-processes=("polybar" "sxhkd" "dunst")
-
-for process in "${processes[@]}"; do
-	if pgrep -f "$process"; then
-		pkill -9 -f "$process" > /dev/null; sleep 0.1
-	fi
-done
-
-sxhkd -c "$HOME/.config/dk/sxhkdrc" &
-
-#"$HOME"/.config/polybar/launch.sh
-#polybar main 2>&1 || tee -a /tmp/polybar.log & disown
-#polybar main -c ~/.config/polybar/docky/config.ini 2>&1 || tee -a /tmp/polybar_docky.log & disown
-polybar top -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-top.log & disown
-polybar bottom -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-bottom.log & disown
-
-dunst &
-pidof -q picom || { picom & }
-pidof -q pipewire || { pipewire & }
-pidof -q xfce4-power-manager || { xfce4-power-manager & }
-pidof -q syncthing || { syncthing & }
-pidof -q redshift || { redshift & }
-
-"$HOME"/scripts/pywal.sh
-. "$HOME"/.cache/wal/colors.sh
+# (re)load sxhkd for keybinds
+if hash sxhkd >/dev/null 2>&1; then
+	pkill sxhkd
+	sxhkd -c "$HOME/.config/dk/sxhkdrc" &
+fi
 
 # spawn a scratchpad terminal if not already (see sxhkdrc and rules for bind and setup)
 # if ! pgrep -f "st -c scratchpad" >/dev/null 2>&1; then
 # 	st -c scratchpad &
 # fi
+
+$HOME/scripts/pywal.sh
+. $HOME/.cache/wal/colors.sh
+
+# (re)load polybar
+if hash polybar >/dev/null 2>&1; then
+	pkill polybar
+	polybar top -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-top.log & disown
+	polybar bottom -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-bottom.log & disown
+fi
+#"$HOME"/.config/polybar/launch.sh
+#polybar main 2>&1 || tee -a /tmp/polybar.log & disown
+#polybar main -c ~/.config/polybar/docky/config.ini 2>&1 || tee -a /tmp/polybar_docky.log & disown
+
+dunst &
+pidof -q picom || { picom & }
+pidof -q pipewire || { pipewire & }
+pidof -q syncthing || { syncthing & }
+pidof -q redshift || { redshift & }
+
+$HOME/scripts/locker.sh
+
+# activate superkey menu
+ksuperkey -e 'Super_L=Alt_L|F2'
 
 # adjust border widths based on the DPI of the monitor
 px=$(xrandr | grep ' connected' | tail -n1 | grep -o '[0-9]\+x[0-9]\+' | cut -d'x' -f2)
@@ -44,13 +46,13 @@ mm=$(xrandr | grep ' connected' | tail -n1 | grep -o '[0-9]\+mm' | tail -n1 | se
 dpi=$(( (px / mm) * 25 ))
 
 if [ $dpi -ge 140 ]; then
+	border_width=5
+	border_outer_width=3
+elif [ $dpi -ge 120 ]; then
 	border_width=4
 	border_outer_width=2
-elif [ $dpi -ge 120 ]; then
-	border_width=3
-	border_outer_width=1
 else
-	border_width=1
+	border_width=2
 	border_outer_width=1
 fi
 
@@ -67,8 +69,11 @@ fi
 	dkcmd set ws=_ apply layout=tile master=1 stack=3 gap=3 msplit=0.5 ssplit=0.5
 
 	# use grid layout, padding, and gaps on last workspace
-	dkcmd set ws=6 layout=grid pad left=200 right=200 top=100 bottom=100 gap=50
+	#dkcmd set ws=6 layout=grid pad left=200 right=200 top=100 bottom=100 gap=50
 
+	# set layouts for specific workspaces
+	dkcmd set ws=1 layout=grid pad left=20 right=20 top=10 bottom=10 gap=10
+	
 	# change workspace names (default: number == name)
 	dkcmd set \
 		ws=1  name="1" \
@@ -135,9 +140,9 @@ fi
 		outer_focus="$color15" \
 		outer_unfocus="$color2" \
 		outer_urgent="$color1" \
-		#outer_focus='#222222' \
-		#outer_unfocus='#222222' \
-		#outer_urgent='#222222'
+		outer_focus='#222222' \
+		outer_unfocus='#222222' \
+		outer_urgent='#222222'
 
 
 	# window rules
@@ -165,10 +170,10 @@ fi
 	dkcmd rule class="^(pavucontrol|transmission-gtk|steam|lxappearance|Syncthing-GTK)$" float=true
 
 	# open window(s) with a specific geometry and coordinates (floating only!)
-	# dkcmd rule class="^google-chrome$" title="^open files$" float=true w=1280 h=720
+	dkcmd rule class="^vivaldi-stable$" title="^open files$" float=true w=1280 h=720
 
 	# open window(s) with ignore_msg=true to avoid focus being grabbed and changing workspace
-	# dkcmd rule class="^TelegramDesktop$" ignore_msg=true
+	dkcmd rule class="^vivaldi-stable$" ignore_msg=true
 
 	# define some terminals and allow them to be absorbed by spawned windows
 	dkcmd rule class="^(st|st-256color|urxvt|kitty|alacritty|xterm|xterm-256colors)$" terminal=true
