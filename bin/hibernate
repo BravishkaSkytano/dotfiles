@@ -1,7 +1,5 @@
-sudo sleep 0.1 # To get auth
+#!/usr/bin/env bash
 
-betterlockscreen -u "$(< "$HOME/.cache/wal/wal")" -l
-
-sleep 3
+#sudo sleep 0.1 # To get auth
 
 echo disk | sudo tee /sys/power/state # Requires sufficient swap space

@@ -7,8 +7,8 @@ alias update='sudo xbps-install -Su && flatpak update'
 alias clean='sudo xbps-remove -oO'
 alias kpurge='sudo vkpurge rm all'
 
-alias bye='echo "See you later!" && sleep 1 && sudo shutdown -h now'
-alias rb='echo "See you soon!" && sleep 1 && sudo reboot'
+alias bye='notify-send -t 1000 "See you later!" "Shutting down now..." && sleep 1 && sudo shutdown -h now'
+alias rb='notify-send -t 1000 "See you soon!" "Rebooting now..." && sleep 1 && sudo reboot'
 
 # --------------------------------------------------
 # HELP
@@ -32,7 +32,8 @@ alias lt='eza -aT --color=always --group-directories-first --icons --ignore-glob
 alias l.='eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
 alias lg='eza -al --color=always --group-directories-first --icons --git' # show git status
 
-alias dots='cd ~/.dotfiles && git status'
+alias dots='cd ~/.dotfiles && lg'
+alias bar='cd ~/.config/polybar'
 
 # --------------------------------------------------
 # GIT
@@ -53,10 +54,11 @@ alias gsp="git stash; git pull"
 # --------------------------------------------------
 
 #[ -x /usr/bin/bat ] && alias bat='bat --style header --style snip --style changes --style header'
-alias brc='${EDITOR:-nano} ~/.bashrc'
-alias barc='${EDITOR:-nano} ~/.bash_aliases'
+alias brc='${EDITOR:-nano} ~/.bashrc && . ~/.bashrc'
+alias barc='${EDITOR:-nano} ~/.bash_aliases && . ~/.bash_aliases'
 alias dkrc='${EDITOR:-nano} ~/.config/dk/dkrc'
-alias bar='${EDITOR:-nano} ~/.config/polybar/config.ini'
+alias sxhkdrc='${EDITOR:-nano} ~/.config/dk/sxhkdrc'
+alias hstasrc='${EDITOR:-nano} ~/.config/herbstluftwm/autostart'
 
 # --------------------------------------------------
 # HUGO

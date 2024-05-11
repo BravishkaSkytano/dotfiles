@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo sleep 0.1 # To get auth
 
 betterlockscreen -u "$(< "$HOME/.cache/wal/wal")" -l

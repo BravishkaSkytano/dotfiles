@@ -29,18 +29,6 @@ source ~/.cache/wal/colors-tty.sh
 [ -x /usr/bin/neofetch ] && neofetch
 
 # --------------------------------------------------
-# EXPORTS
-# --------------------------------------------------
-
-export PATH=$PATH:$HOME/.local/bin:/opt
-export BROWSER="vivaldi-stable"
-export EDITOR="micro"
-export VISUAL="micro"
-#export $(dbus-launch)
-
-export __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | grep vendor
-
-# --------------------------------------------------
 # PROMPT
 # --------------------------------------------------
 function parse_git_dirty {

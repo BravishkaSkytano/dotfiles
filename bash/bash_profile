@@ -1,0 +1,15 @@
+# .bash_profile
+
+export PATH=$PATH:$HOME/.local/bin:/opt
+export BROWSER='vivaldi-stable'
+export EDITOR='micro'
+export VISUAL='micro'
+export $(dbus-launch)
+
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+
+export __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | grep vendor
+
+# Get the aliases and functions
+[ -f $HOME/.bashrc ] && . $HOME/.bashrc
