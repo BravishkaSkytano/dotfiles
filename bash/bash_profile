@@ -1,6 +1,6 @@
 # .bash_profile
 
-export PATH=$PATH:$HOME/.local/bin:/opt
+export PATH=$PATH:$HOME/.local/bin:$HOME/gems/bin:$HOME/.cargo/bin
 export BROWSER='vivaldi-stable'
 export EDITOR='micro'
 export VISUAL='micro'

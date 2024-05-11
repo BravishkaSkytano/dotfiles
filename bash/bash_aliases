@@ -58,7 +58,7 @@ alias brc='${EDITOR:-nano} ~/.bashrc && . ~/.bashrc'
 alias barc='${EDITOR:-nano} ~/.bash_aliases && . ~/.bash_aliases'
 alias dkrc='${EDITOR:-nano} ~/.config/dk/dkrc'
 alias sxhkdrc='${EDITOR:-nano} ~/.config/dk/sxhkdrc'
-alias hstasrc='${EDITOR:-nano} ~/.config/herbstluftwm/autostart'
+alias hstlftrc='${EDITOR:-nano} ~/.config/herbstluftwm/autostart'
 
 # --------------------------------------------------
 # HUGO

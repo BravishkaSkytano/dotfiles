@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Zettlr
 Comment=A Markdown editor for the 21st century
-Exec=/home/yoela/.local/bin/Zettlr-x86_64.AppImage"
+Exec=/home/yoela/.local/bin/Zettlr.AppImage
 Terminal=false
 Type=Application
 #Icon=/home/yoela/.cache/thumbnails/normal/5dd815b0f5a04a3a4c0e1b65491c4362.png
