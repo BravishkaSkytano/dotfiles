@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+# source the pywal colors
+. "${HOME}/.cache/wal/colors.sh"
+
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
+
+# --------------------------------------------------
+# FRAMES
+# --------------------------------------------------
+
+hc set frame_border_active_color "$color2"
+hc set frame_border_normal_color "$color1"
+hc set frame_bg_normal_color gray
+hc set frame_bg_active_color black
+hc set frame_normal_opacity 80
+hc set frame_active_opacity 100
+hc set frame_border_width 1
+hc set show_frame_decorations 'focused_if_multiple'
+hc set frame_transparent_width 5
+hc set frame_gap 7
+
+# --------------------------------------------------
+# TITLES
+# --------------------------------------------------
+
+hc attr theme.title_height 15
+hc attr theme.title_when one_tab
+hc attr theme.title_font 'JetBrainsMono NerdFont:pixelsize=12'
+hc attr theme.title_depth 3
+hc attr theme.active.color "$color2" # '#345F0Cef'
+hc attr theme.title_color "$color0" # '#ffffff'
+hc attr theme.normal.color "$color1" # '#323232dd'
+hc attr theme.urgent.color "$color15" # '#7811A1dd'
+
+# --------------------------------------------------
+# TABS
+# --------------------------------------------------
+
+hc attr theme.tab_color "$color4" # '#1F1F1Fdd'
+hc attr theme.active.tab_color '#2B4F0Add'
+hc attr theme.active.tab_outer_color '#6C8257dd'
+hc attr theme.active.tab_title_color '#ababab'
+hc attr theme.normal.title_color '#898989'
+hc attr theme.inner_width 1
+hc attr theme.inner_color black
+hc attr theme.border_width 3
+
+# --------------------------------------------------
+# FLOATING
+# --------------------------------------------------
+
+hc attr theme.floating.border_width 4
+hc attr theme.floating.outer_width 1
+hc attr theme.floating.outer_color black
+hc attr theme.active.inner_color '#789161'
+hc attr theme.urgent.inner_color '#9A65B0'
+hc attr theme.normal.inner_color '#606060'
+
+# copy inner color to outer_color
+for state in active urgent normal ; do
+	hc substitue C theme.${state}.inner_color \
+		attr theme.${state}.outer_color C
+done
+hc attr theme.tiling.outer_width 1
+hc attr theme.background_color '#141414'
+
+# --------------------------------------------------
+# GAPS, PADDINGS, SURROUNDINGS
+# --------------------------------------------------
+
+hc set window_gap 0
+hc set frame_padding 0
+hc set smart_window_surroundings off
+hc set smart_frame_surroundings on
+hc set mouse_recenter_gap 0

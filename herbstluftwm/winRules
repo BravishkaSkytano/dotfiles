@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+hc unrule -F
+
+# --------------------------------------------------
+# MOVE PROGRAMS TO SPECIFIC WORKSPACE
+# --------------------------------------------------
+
+hc rule class=vivaldi-stable tag=2
+hc rule class=Zettlr tag=3
+hc rule class=thunar tag=4
+hc rule class=Zotero tag=4
+hc rule class=steam tag=6
+hc rule class=steam_app tag=5
+
+hc rule focus=on
+hc rule floatplacement=smart
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+hc rule fixedsize floating=on
