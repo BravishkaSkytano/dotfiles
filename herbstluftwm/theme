@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # source the pywal colors
 . "${HOME}/.cache/wal/colors.sh"
 
@@ -16,7 +14,7 @@ hc set frame_bg_normal_color gray
 hc set frame_bg_active_color black
 hc set frame_normal_opacity 80
 hc set frame_active_opacity 100
-hc set frame_border_width 1
+hc set frame_border_width 10
 hc set show_frame_decorations 'focused_if_multiple'
 hc set frame_transparent_width 5
 hc set frame_gap 7

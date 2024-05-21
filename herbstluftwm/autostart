@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # this is a simple config for herbstluftwm
 
@@ -8,8 +8,6 @@ hc() {
 
 hc emit_hook reload
 
-#xsetroot -solid '#5A8E3A'
-
 # --------------------------------------------------
 # AUTOSTART
 # --------------------------------------------------
@@ -17,18 +15,17 @@ hc emit_hook reload
 "$HOME"/scripts/pywal.sh
 . "$HOME"/.cache/wal/colors.sh
 
-# (re)load polybar
-if hash polybar >/dev/null 2>&1; then
-	pkill polybar
-	polybar top -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-top.log & disown
-	polybar bottom -c ~/.config/polybar/hack/config.ini 2>&1 || tee -a /tmp/polybar_hack-bottom.log & disown
-fi
+./panel.sh
 
 pidof -q xidlehook || { "$HOME"/scripts/locker.sh & }
+pidof -q picom || { picom & }
 pidof -q dunst || { dunst & }
 pidof -q pipewire || { pipewire & }
-pidof -q syncthing || { syncthing serve & }
+pidof -q poweralertd || { poweralertd & }
+pidof -q syncthing || { syncthing & }
 pidof -q redshift || { redshift & }
+
+xsetroot -solid '$color1'
 
 # activate superkey menu
 ksuperkey -e 'Super_L=Alt_L|F2'
@@ -42,10 +39,6 @@ ksuperkey -e 'Super_L=Alt_L|F2'
 # rules
 . "$HOME"/.config/herbstluftwm/winRules
 
-hc set tree_style '╾│ ├└╼─┐'
-
-# unlock, just to be sure
-hc unlock
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0

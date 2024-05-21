@@ -1,21 +1,42 @@
-#!/usr/bin/env bash
-
 hc unrule -F
 
 # --------------------------------------------------
-# MOVE PROGRAMS TO SPECIFIC WORKSPACE
+# MOVE PROGRAMS TO SPECIFIC TAG/WORKSPACE
 # --------------------------------------------------
 
 hc rule class=vivaldi-stable tag=2
+
 hc rule class=Zettlr tag=3
-hc rule class=thunar tag=4
+hc rule class=obsidian tag=3
+
+hc rule class=Thunar tag=4
 hc rule class=Zotero tag=4
-hc rule class=steam tag=6
+
+hc rule class=steam tag=5
 hc rule class=steam_app tag=5
 
+hc rule class=telegram-desktop tag=6
+hc rule class=discord tag=6
+
+# --------------------------------------------------
+# LOAD SPECIFIC LAYOUT ON TAG
+# --------------------------------------------------
+
+load tag1 '(clients grid:0)'
+load tag5 '(clients max:0)'
+
+# --------------------------------------------------
+# 
+# --------------------------------------------------
 hc rule focus=on
 hc rule floatplacement=smart
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule fixedsize floating=on
+
+hc set tree_style '╾│ ├└╼─┐'
+
+# UNLOCK #
+#--------#
+hc unlock

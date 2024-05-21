@@ -6,7 +6,7 @@ export BRIGHTNESS="$(xbacklight -get)"
 
 # Run xidlehook
 xidlehook --not-when-fullscreen --not-when-audio \
-  --timer 300 \
+  --timer 600 \
     "xbacklight -d $PRIMARY_DISPLAY = 10 -time 1000" \
     "xbacklight -d $PRIMARY_DISPLAY = $BRIGHTNESS" \
   --timer 30 \
