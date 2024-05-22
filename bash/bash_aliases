@@ -3,9 +3,10 @@
 alias cl='clear'
 alias fr='fc-cache -rv >/dev/null 2>&1'
 
-alias update='sudo xbps-install -Su && flatpak update'
+alias update='sudo xbps-install -Su && flatpak update && nix-channel --update && nix-env --upgrade'
 alias clean='sudo xbps-remove -oO'
 alias kpurge='sudo vkpurge rm all'
+alias storage='sudo du -cha --max-depth=1 / | grep -E "M|G" && echo "Install ncdu for easier viewing"'
 
 alias bye='notify-send -t 1000 "See you later!" "Shutting down now..." && sleep 1 && sudo shutdown -h now'
 alias rb='notify-send -t 1000 "See you soon!" "Rebooting now..." && sleep 1 && sudo reboot'
@@ -34,6 +35,7 @@ alias lg='eza -al --color=always --group-directories-first --icons --git' # show
 
 alias dots='cd ~/.dotfiles && lg'
 alias bar='cd ~/.config/polybar'
+alias herbstwm='cd ~/.config/herbstluftwm'
 
 # --------------------------------------------------
 # GIT
@@ -58,7 +60,7 @@ alias brc='${EDITOR:-nano} ~/.bashrc && . ~/.bashrc'
 alias barc='${EDITOR:-nano} ~/.bash_aliases && . ~/.bash_aliases'
 alias dkrc='${EDITOR:-nano} ~/.config/dk/dkrc'
 alias sxhkdrc='${EDITOR:-nano} ~/.config/dk/sxhkdrc'
-alias hstlftrc='${EDITOR:-nano} ~/.config/herbstluftwm/autostart'
+alias herbstrc='${EDITOR:-nano} ~/.config/herbstluftwm/autostart'
 
 # --------------------------------------------------
 # HUGO

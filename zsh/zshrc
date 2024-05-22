@@ -133,3 +133,5 @@ alias lg='eza -al --color=always --group-directories-first --icons --git' # show
 #$HOME/.local/bin/colorscript -r
 eval "$(starship init zsh)"
 (cat ~/.cache/wal/sequences &)
+
+if [ -e /home/yoela/.nix-profile/etc/profile.d/nix.sh ]; then . /home/yoela/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

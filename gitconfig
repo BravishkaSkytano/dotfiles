@@ -5,7 +5,5 @@
 	editor = micro
 [credential]
 	helper = store
-[credential "https://gitlab.com"]
-	helper = !/usr/bin/glab auth git-credential
 [pull]
 	rebase = false
