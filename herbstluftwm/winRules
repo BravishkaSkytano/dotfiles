@@ -17,12 +17,14 @@ hc rule class=steam_app tag=5
 
 hc rule class=telegram-desktop tag=6
 hc rule class=discord tag=6
+hc rule class=whatsie tag=6
 
 # --------------------------------------------------
 # LOAD SPECIFIC LAYOUT ON TAG
 # --------------------------------------------------
 
 load tag1 '(clients grid:0)'
+load tag3 '(clients max:0)'
 load tag5 '(clients max:0)'
 
 # --------------------------------------------------
