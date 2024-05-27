@@ -8,8 +8,8 @@ alias clean='sudo xbps-remove -oO'
 alias kpurge='sudo vkpurge rm all'
 alias storage='sudo du -cha --max-depth=1 / | grep -E "M|G" && echo "Install ncdu for easier viewing"'
 
-alias bye='notify-send -t 1000 "See you later!" "Shutting down now..." && sleep 1 && sudo shutdown -h now'
-alias rb='notify-send -t 1000 "See you soon!" "Rebooting now..." && sleep 1 && sudo reboot'
+alias bye='notify-send -t 1000 "See you later!" "Shutting down now..." && sleep 1 && loginctl poweroff'
+alias rb='notify-send -t 1000 "See you soon!" "Rebooting now..." && sleep 1 && loginctl reboot'
 
 # --------------------------------------------------
 # HELP
@@ -36,6 +36,7 @@ alias lg='eza -al --color=always --group-directories-first --icons --git' # show
 alias dots='cd ~/.dotfiles && lg'
 alias bar='cd ~/.config/polybar'
 alias herbstwm='cd ~/.config/herbstluftwm'
+alias awesomewm='cd ~/.config/awesome'
 
 # --------------------------------------------------
 # GIT
@@ -61,6 +62,7 @@ alias barc='${EDITOR:-nano} ~/.bash_aliases && . ~/.bash_aliases'
 alias dkrc='${EDITOR:-nano} ~/.config/dk/dkrc'
 alias sxhkdrc='${EDITOR:-nano} ~/.config/dk/sxhkdrc'
 alias herbstrc='${EDITOR:-nano} ~/.config/herbstluftwm/autostart'
+alias awesomerc='${EDITOR:-nano} ~/.config/awesome/rc.lua'
 
 # --------------------------------------------------
 # HUGO

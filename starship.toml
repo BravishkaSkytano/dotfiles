@@ -1,29 +1,29 @@
 format = """
-[╔═══════════════════════════════════](bold green)\
+[╔═══════════════════════════════════════════════󰶻](bold white)\
 $line_break\
-[║](bold green)\
+[║](bold white)\
 $os\
 $all\
 $line_break\
-[╠═══════════════════════════════════](bold green)\
+[╠═══════════════════════════════════════════════󰶻](bold white)\
 $line_break\
-[╚═](bold green)\
+[╚══](bold white)\
 $character"""
 
 [directory]
-style = "bold blue"
+#style = "bold blue"
 #truncation_length = 8
-#truncation_symbol = '…/'
+truncation_symbol = '…/'
 
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
 ".config" = "⚙"
 ".dotfiles" = "⚙○"
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚"
+"Pictures" = " "
 # Keep in mind that the order matters. For example:
 # "Important Documents" = " 󰈙 "
 # will not be replaced, because "Documents" was already substituted before.
@@ -31,8 +31,8 @@ style = "bold blue"
 # "Important 󰈙 " = " 󰈙 "
 
 [character]
-success_symbol = "[](green)"
-error_symbol = "[](red)"
+success_symbol = "[󰶻](green)"
+error_symbol = "[󰶻](red)"
 vimcmd_symbol = "[❮](yellow)"
 
 [os]

@@ -37,6 +37,10 @@
     ~/.config/alacritty:
       glob: true
       path: alacritty
+
+    ~/.config/micro/colorschemes:
+      glob: true
+      path: micro
       
     ~/.config/redshift:
       glob: true

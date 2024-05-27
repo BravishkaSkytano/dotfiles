@@ -2,8 +2,10 @@
 
 export PATH=$PATH:$HOME/.local/bin:$HOME/gems/bin:$HOME/.cargo/bin
 export BROWSER='vivaldi-stable'
+export TERMINAL='alacritty'
 export EDITOR='micro'
 export VISUAL='micro'
+export "MICRO_TRUECOLOR=1"
 #export $(dbus-launch)
 
 # Install Ruby Gems to ~/gems
@@ -13,5 +15,3 @@ export __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | gr
 
 # Get the aliases and functions
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
-
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
