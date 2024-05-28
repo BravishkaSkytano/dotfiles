@@ -38,7 +38,7 @@ end)
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = os.getenv("TERMINAL") or "alacritty"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -214,14 +214,22 @@ awful.mouse.append_global_mousebindings({
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
+    awful.key({ modkey,           }, "s",
+    	hotkeys_popup.show_help,
+        {description="show help", group="awesome"}
+    ),
+    awful.key({ modkey,           }, "w",
+    	function () mymainmenu:show() end,
+        {description = "show main menu", group = "awesome"}
+    ),
+    awful.key({ modkey, "Control" }, "r",
+    	awesome.restart,
+        {description = "reload awesome", group = "awesome"}
+    ),
+    awful.key({ modkey, "Shift"   }, "q",
+    	awesome.quit,
+        {description = "quit awesome", group = "awesome"}
+    ),
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -232,12 +240,55 @@ awful.keyboard.append_global_keybindings({
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey },            "r",     function () awful.spawn(dmenu_run) end,
-              {description = "run prompt", group = "launcher"}),
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey,           }, "Return",
+    	function () awful.spawn(terminal) end,
+        {description = "open a terminal", group = "launcher"}
+    ),
+    awful.key({ modkey },            "r",
+    	function () awful.spawn("dmenu_run") end,
+        {description = "run prompt", group = "launcher"}
+    ),
+    awful.key({ modkey }, "p",
+    	function() menubar.show() end,
+        {description = "show the menubar", group = "launcher"}
+    ),
+	-- Volume
+
+    awful.key(
+		{ }, "XF86AudioRaiseVolume", function() 
+			awful.spawn.with_shell("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0")
+			awful.spawn.with_shell("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
+		end,
+        { description = "raise volume", group = "volume" }
+	),
+    awful.key(
+		{ }, "XF86AudioLowerVolume", function() 
+			awful.spawn.with_shell("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0")
+			awful.spawn.with_shell("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+		end,
+        { description = "lower volume", group = "volume" }
+	),
+    awful.key(
+		{ }, "XF86AudioMute", function() 
+			awful.spawn.with_shell("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+		end,
+        { description = "mute volume", group = "volume" }
+	),
+
+	-- Brightness
+
+	awful.key(
+		{ }, "XF86MonBrightnessUp", function() 
+			awful.spawn.with_shell("brightnessctl s 5%+")
+		end,
+        { description = "raise brightness", group = "brightness" }
+	),
+	awful.key(
+		{ }, "XF86MonBrightnessDown", function() 
+			awful.spawn.with_shell("brightnessctl s 5%-")
+		end,
+        { description = "lower brightness", group = "brightness" }
+	),
 })
 
 -- Tags related keybindings
