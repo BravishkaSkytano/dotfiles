@@ -3,7 +3,11 @@
 alias cl='clear'
 alias fr='fc-cache -rv >/dev/null 2>&1'
 
-alias update='sudo xbps-install -Su && flatpak update && nix-channel --update && nix-env --upgrade'
+alias flat-up='flatpak update'
+alias nix-up='nix-channel --update && nix-env --upgrade'
+alias xbps-up='sudo xbps-install -Su && flat-up && nix-up'
+alias deb-up='sudo apt upgrade && flat-up && nix-up'
+
 alias clean='sudo xbps-remove -oO'
 alias kpurge='sudo vkpurge rm all'
 alias storage='sudo du -cha --max-depth=1 / | grep -E "M|G" && echo "Install ncdu for easier viewing"'
@@ -29,7 +33,7 @@ alias ......='cd ../../../../..'
 #alias ls='eza -aFH --icons --group-directories-first --git -1'
 alias ls='eza -a --color=always --group-directories-first --icons' # preferred listing
 alias ll='eza -al --color=always --group-directories-first --icons' # long format
-alias lt='eza -aT --color=always --group-directories-first --icons --ignore-glob=".git|node_modules|dotbot"' # tree listing
+alias lt='eza -aT --color=always --group-directories-first --icons --ignore-glob=".git|node_modules|dotbot|.obsidian"' # tree listing
 alias l.='eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
 alias lg='eza -al --color=always --group-directories-first --icons --git' # show git status
 

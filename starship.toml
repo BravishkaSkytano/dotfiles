@@ -1,14 +1,17 @@
 format = """
-[╔═══════════════════════════════════════════════󰶻](bold white)\
+[╭](bold green)$fill[╮](bold green)\
 $line_break\
-[║](bold white)\
 $os\
 $all\
 $line_break\
-[╠═══════════════════════════════════════════════󰶻](bold white)\
+[├](bold green)$fill[╯](bold green)\
 $line_break\
-[╚══](bold white)\
+[╰─](bold green)\
 $character"""
+
+[fill]
+symbol = '─'
+style = 'bold green'
 
 [directory]
 #style = "bold blue"
@@ -31,55 +34,9 @@ truncation_symbol = '…/'
 # "Important 󰈙 " = " 󰈙 "
 
 [character]
-success_symbol = "[󰶻](green)"
-error_symbol = "[󰶻](red)"
-vimcmd_symbol = "[❮](yellow)"
+#success_symbol = "[❯](bold green)"
+#error_symbol = "[❯](bold red)"
 
 [os]
 disabled = false
 format = '[ $symbol ]($style)'
-
-[os.symbols]
-Alpaquita = " "
-Alpine = " "
-AlmaLinux = " "
-Amazon = " "
-Android = " "
-Arch = " "
-Artix = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-RockyLinux = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Void = " "
-Windows = "󰍲 "

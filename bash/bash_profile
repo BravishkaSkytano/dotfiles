@@ -15,3 +15,5 @@ export __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | gr
 
 # Get the aliases and functions
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
+
+if [ -e /home/yoela/.nix-profile/etc/profile.d/nix.sh ]; then . /home/yoela/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

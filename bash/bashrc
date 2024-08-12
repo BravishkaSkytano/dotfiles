@@ -28,7 +28,7 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 # To add support for TTYs this line can be optionally added.
 #source ~/.cache/wal/colors-tty.sh
 
-[ -x /usr/bin/starship ] || [ -x ~/.nix-profile/bin/starship ] && eval "$(starship init bash)"
+[ -x /usr/bin/starship ] || [ -x /usr/local/bin/starship ] || [ -x ~/.nix-profile/bin/starship ] && eval "$(starship init bash)"
 [ -x /usr/bin/fastfetch ] || [ -x ~/.nix-profile/bin/fastfetch ] && fastfetch
 
 # --------------------------------------------------

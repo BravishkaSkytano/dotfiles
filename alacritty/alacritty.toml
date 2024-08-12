@@ -20,10 +20,15 @@ shape = "Block"
 size = 11
 builtin_box_drawing = true
 
-normal = { family = "IosevkaTerm", style = "Regular" }
-bold = { family = "IosevkaTerm", style = "Bold" }
-italic = { family = "IosevkaTerm", style = "Italic" }
-bold_italic = { family = "IosevkaTerm", style = "Bold Italic" }
+#normal = { family = "IosevkaTerm", style = "Regular" }
+#bold = { family = "IosevkaTerm", style = "Bold" }
+#italic = { family = "IosevkaTerm", style = "Italic" }
+#bold_italic = { family = "IosevkaTerm", style = "Bold Italic" }
+
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+bold = { family = "FiraCode Nerd Font", style = "Bold" }
+italic = { family = "FiraCode Nerd Font", style = "Italic" }
+bold_italic = { family = "FiraCode Nerd Font", style = "Bold Italic" }
 
 [selection]
 save_to_clipboard = false

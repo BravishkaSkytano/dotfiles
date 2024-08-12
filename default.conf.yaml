@@ -14,16 +14,16 @@
 - link:
 
     ~/.gitconfig: gitconfig
-    ~/.zshrc: zsh/zshrc
+    #~/.zshrc: zsh/zshrc
     ~/.profile: profile
     ~/.xinitrc: xinitrc
-    
+
     ~/:
       glob: true
       path: bash/*
       prefix: '.'
 
-    ~/.config/autostart.sh: autostart.sh  
+    #~/.config/autostart.sh: autostart.sh  
     ~/.config/starship.toml: starship.toml
 
     #~/.config/nvim:
@@ -41,15 +41,15 @@
     ~/.config/micro/colorschemes:
       glob: true
       path: micro
-      
+
     ~/.config/redshift:
       glob: true
       path: redshift
 
-    ~/.config/zsh:
-      glob: true
-      path: zsh/*
-      exclude: [ zsh/zshrc ]
+    #~/.config/zsh:
+      #glob: true
+      #path: zsh/*
+      #exclude: [ zsh/zshrc ]
 
     ~/.local/bin:
       glob: true
